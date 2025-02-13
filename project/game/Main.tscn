@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw83n6j2pmhgk"]
+
+[ext_resource type="PackedScene" uid="uid://8ubsklmdk8ip" path="res://game/player/Player.tscn" id="1_lpjlm"]
+[ext_resource type="PackedScene" uid="uid://mp41sy241txf" path="res://game/prototype/prototype_basics.tscn" id="1_p47xo"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_lpjlm")]
+unique_name_in_owner = true
+
+[node name="prototype_basics" parent="." instance=ExtResource("1_p47xo")]
+
+[editable path="prototype_basics"]

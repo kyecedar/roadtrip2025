@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5r450767l42x"]
+
+[ext_resource type="Script" path="res://scripts/export_interfaces/playerExportInterface.gd" id="1_x7sgc"]
+
+[node name="PlayerExportInterface" type="Node"]
+script = ExtResource("1_x7sgc")
+wheel_turn_speed = 2.5
+camera_max_roll_rotation = 0.0
