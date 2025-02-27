@@ -1,12 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://dqi854bvo43n5"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory_Slot.gd" id="1_jht5t"]
-[ext_resource type="Texture2D" uid="uid://bv4opui6t7m7a" path="res://Icons/icon9.png" id="2_4edl2"]
-[ext_resource type="FontFile" uid="uid://bi04iecmbt37l" path="res://Fonts/ARCADECLASSIC.TTF" id="3_kbu0m"]
+[ext_resource type="Texture2D" uid="uid://bv4opui6t7m7a" path="res://Icons/icon9.png" id="2_c54og"]
+[ext_resource type="FontFile" uid="uid://bi04iecmbt37l" path="res://assets/fonts/ARCADECLASSIC.TTF" id="3_kbu0m"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kbdgs"]
 
 [node name="Inventory_Slot" type="Control"]
+texture_filter = 1
+texture_repeat = 1
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 3
 anchors_preset = 0
@@ -43,7 +45,7 @@ color = Color(0.611765, 0.603922, 0.584314, 1)
 [node name="ItemIcon" type="Sprite2D" parent="InnerBorder"]
 position = Vector2(70, 70)
 scale = Vector2(2.5, 2.5)
-texture = ExtResource("2_4edl2")
+texture = ExtResource("2_c54og")
 
 [node name="ItemQuantity" type="Label" parent="InnerBorder"]
 layout_mode = 0

@@ -23,7 +23,7 @@ Global="*res://inventory/Scripts/Global.gd"
 
 [dotnet]
 
-project/assembly_name="roadtrip2025"
+project/assembly_name="inventory_test_kye"
 
 [file_customization]
 
@@ -33,10 +33,6 @@ folder_colors={
 "res://scripts/": "orange",
 "res://scripts/export_interfaces/": "orange"
 }
-
-[dotnet]
-
-project/assembly_name="inventory_test_kye"
 
 [input]
 

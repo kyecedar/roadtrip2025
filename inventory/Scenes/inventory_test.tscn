@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://b2j6sdi3wn0pp"]
 
-[ext_resource type="FontFile" uid="uid://bi04iecmbt37l" path="res://Fonts/ARCADECLASSIC.TTF" id="1_5pqrk"]
+[ext_resource type="FontFile" uid="uid://bi04iecmbt37l" path="res://assets/fonts/ARCADECLASSIC.TTF" id="1_5pqrk"]
 [ext_resource type="Script" path="res://Scripts/inventory_test.gd" id="1_fpraf"]
 [ext_resource type="PackedScene" uid="uid://bxbnos3drxhfp" path="res://Scenes/Inventory_UI.tscn" id="2_w8vtx"]
+
 
 [node name="inventory_test" type="Control"]
 layout_mode = 3

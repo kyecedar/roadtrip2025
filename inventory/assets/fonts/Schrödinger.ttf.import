@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bi04iecmbt37l"
-path="res://.godot/imported/ARCADECLASSIC.TTF-883dd5db4059b60dfdc0dbddcca7432f.fontdata"
+uid="uid://do6g4q03tl1gj"
+path="res://.godot/imported/Schrödinger.ttf-fb417669104eb4b2d9f7e6ea4b233766.fontdata"
 
 [deps]
 
-source_file="res://inventory/Fonts/ARCADECLASSIC.TTF"
-dest_files=["res://.godot/imported/ARCADECLASSIC.TTF-883dd5db4059b60dfdc0dbddcca7432f.fontdata"]
+source_file="res://assets/fonts/Schrödinger.ttf"
+dest_files=["res://.godot/imported/Schrödinger.ttf-fb417669104eb4b2d9f7e6ea4b233766.fontdata"]
 
 [params]
 
