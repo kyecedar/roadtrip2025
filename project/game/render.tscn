@@ -17,8 +17,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PlayerExportInterface" parent="." instance=ExtResource("1_ad7tw")]
-camera_lean_ratio = 50.0
-camera_max_roll_rotation = 0.0
 
 [node name="DatPau\'see" type="Control" parent="."]
 anchors_preset = 0
