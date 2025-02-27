@@ -18,6 +18,10 @@ config/icon="res://icon.svg"
 
 Global="*res://Scripts/Global.gd"
 
+[dotnet]
+
+project/assembly_name="inventory_test_kye"
+
 [input]
 
 ui_inventory={
