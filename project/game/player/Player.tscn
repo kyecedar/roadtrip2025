@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://8ubsklmdk8ip"]
+[gd_scene load_steps=12 format=3 uid="uid://8ubsklmdk8ip"]
 
 [ext_resource type="Script" path="res://game/player/player.gd" id="1_os3da"]
 [ext_resource type="Texture2D" uid="uid://cvd307y53awru" path="res://assets/prototype/kenney/PNG/Dark/texture_09.png" id="2_r3fyy"]
@@ -20,8 +20,15 @@ uv1_triplanar = true
 albedo_texture = ExtResource("2_r3fyy")
 uv1_triplanar = true
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l7t7k"]
+radius = 0.4
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6x7bb"]
+radius = 0.4
+height = 4.4
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_2lptk"]
-size = Vector3(1.9, 1.2, 4.9)
+size = Vector3(1.9, 1.2, 2.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dbo52"]
 albedo_texture = ExtResource("3_liska")
@@ -106,9 +113,25 @@ height = 0.3
 sides = 12
 material = SubResource("StandardMaterial3D_pvo3q")
 
-[node name="Collision" type="CollisionShape3D" parent="."]
+[node name="CollisionFront" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.8, 1.8)
+shape = SubResource("CapsuleShape3D_l7t7k")
+
+[node name="CollisionLeft" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0.6, 0.8, -1.41561e-07)
+shape = SubResource("CapsuleShape3D_6x7bb")
+
+[node name="CollisionRight" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, -0.6, 0.8, -1.41561e-07)
+shape = SubResource("CapsuleShape3D_6x7bb")
+
+[node name="CollisionCab" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
 shape = SubResource("BoxShape3D_2lptk")
+
+[node name="CollisionRear" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.8, -1.8)
+shape = SubResource("CapsuleShape3D_l7t7k")
 
 [node name="MainBodyMesh" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 1.19209e-07)

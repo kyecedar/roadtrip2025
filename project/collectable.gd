@@ -1,5 +1,5 @@
 extends Node3D
-@onready var inventory_ui = $InventoryUI
+#@onready var inventory_ui = $InventoryUI
 @export var item_name = ""
 @export var item_texture: Texture
 var scene_path: String = "res://inventory/Scenes/Inventory_Item.tscn"

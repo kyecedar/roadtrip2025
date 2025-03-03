@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cw83n6j2pmhgk"]
+[gd_scene load_steps=8 format=3 uid="uid://cw83n6j2pmhgk"]
 
 [ext_resource type="PackedScene" uid="uid://8ubsklmdk8ip" path="res://game/player/Player.tscn" id="1_lpjlm"]
 [ext_resource type="PackedScene" uid="uid://mp41sy241txf" path="res://game/prototype/prototype_basics.tscn" id="1_p47xo"]
@@ -7,6 +7,14 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dxckh"]
 size = Vector3(147.046, 15.3667, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6biep"]
+transparency = 4
+albedo_color = Color(0.3, 0.79, 1, 0.231373)
+
+[sub_resource type="BoxMesh" id="BoxMesh_r7mjv"]
+material = SubResource("StandardMaterial3D_6biep")
+size = Vector3(147.046, 15.367, 1)
 
 [node name="Main" type="Node3D"]
 
@@ -24,6 +32,9 @@ script = ExtResource("4_gj0l0")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="level transition"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.29959, 7.18335, 39.4361)
 shape = SubResource("BoxShape3D_dxckh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="level transition/CollisionShape3D"]
+mesh = SubResource("BoxMesh_r7mjv")
 
 [connection signal="body_entered" from="level transition" to="level transition" method="_on_body_entered"]
 
