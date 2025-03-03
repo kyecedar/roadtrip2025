@@ -29,13 +29,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.482133, 1, 7.61624)
 [node name="level transition" type="Area3D" parent="."]
 script = ExtResource("4_gj0l0")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="level transition"]
+[node name="Collision" type="CollisionShape3D" parent="level transition"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.29959, 7.18335, 39.4361)
 shape = SubResource("BoxShape3D_dxckh")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="level transition/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="level transition/Collision"]
 mesh = SubResource("BoxMesh_r7mjv")
 
 [connection signal="body_entered" from="level transition" to="level transition" method="_on_body_entered"]
-
-[editable path="prototype_basics"]
