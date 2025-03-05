@@ -15,6 +15,9 @@ var backward_look_at : Vector3 = Vector3.ZERO
 
 var miles_per_hour : float = 0.0
 
+@onready var back_wheel_right = $RearRight
+@onready var back_wheel_left = $RearLeft
+@onready var speedometer = $BackBodyMesh/speedometer
 #endregion Variables. ////////////////////
 
 
@@ -29,11 +32,11 @@ func _physics_process(delta: float) -> void:
 	process_go_go(delta)
 	process_body(delta)
 	process_camera(delta)
-
-
+	speedometer.text = str(int (miles_per_hour))
+#	if steering > 10:
+#		Drive.wheels.traction * .10
 func process_go_go(delta: float) -> void:
 	steering = move_toward(steering, Input.get_axis("turn_right", "turn_left") * deg_to_rad(Drive.PLAYER_MAX_STEER), delta * Drive.PLAYER_WHEEL_TURN_SPEED)
-	
 	var forwards_power : float = Input.get_action_strength("go_forwards") * Drive.PLAYER_ENGINE_FORWARDS_POWER
 	var backwards_power : float = -Input.get_action_strength("go_backwards") * Drive.PLAYER_ENGINE_BACKWARDS_POWER
 	
@@ -43,7 +46,13 @@ func process_go_go(delta: float) -> void:
 	else:
 		engine_force = 0.0
 
-
+func _input(event):
+	if event.is_action_pressed("drift"):
+		back_wheel_right.wheel_friction_slip=0.3
+		back_wheel_left.wheel_friction_slip=0.3
+	else:
+		back_wheel_right.wheel_friction_slip=0.8
+		back_wheel_left.wheel_friction_slip=0.8
 func process_body(delta: float) -> void:
 	# auto upright.
 	rotation.z = move_toward(rotation.z, clamp(rotation.z, -deg_to_rad(Drive.PLAYER_BODY_LEAN_HELP), deg_to_rad(Drive.PLAYER_BODY_LEAN_HELP)), delta * 1.0)

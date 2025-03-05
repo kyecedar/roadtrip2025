@@ -45,28 +45,44 @@ metadata/_edit_use_anchors_ = true
 
 [node name="apples" type="Button" parent="."]
 layout_mode = 0
-offset_right = 359.0
-offset_bottom = 246.0
+offset_right = 212.0
+offset_bottom = 171.0
 text = "buy apples
-"
-
-[node name="upgrade" type="Button" parent="."]
-layout_mode = 0
-offset_left = 785.0
-offset_top = 246.0
-offset_right = 1116.0
-offset_bottom = 519.0
-text = "3 apples 5 sticks
 "
 
 [node name="sticks" type="Button" parent="."]
 layout_mode = 0
 offset_left = 2.0
-offset_top = 405.0
-offset_right = 454.0
+offset_top = 464.0
+offset_right = 234.0
 offset_bottom = 640.0
 text = "buy sticks
 "
+
+[node name="engine" type="Button" parent="."]
+layout_mode = 0
+offset_left = 255.0
+offset_top = 514.0
+offset_right = 424.0
+offset_bottom = 640.0
+text = "ENGINE"
+
+[node name="wheels" type="Button" parent="."]
+layout_mode = 0
+offset_left = 446.0
+offset_top = 518.0
+offset_right = 610.0
+offset_bottom = 644.0
+text = "WHEELS
+"
+
+[node name="suspension" type="Button" parent="."]
+layout_mode = 0
+offset_left = 642.0
+offset_top = 514.0
+offset_right = 804.0
+offset_bottom = 641.0
+text = "SUSPENSION"
 
 [node name="upgrade_text" type="Label" parent="."]
 layout_mode = 0
@@ -77,5 +93,7 @@ label_settings = SubResource("LabelSettings_8lqtr")
 horizontal_alignment = 1
 
 [connection signal="pressed" from="apples" to="." method="_on_shop_pressed"]
-[connection signal="pressed" from="upgrade" to="." method="_on_upgrade_pressed"]
 [connection signal="pressed" from="sticks" to="." method="_on_sticks_pressed"]
+[connection signal="pressed" from="engine" to="." method="_on_upgrade_pressed"]
+[connection signal="pressed" from="wheels" to="." method="_on_wheels_pressed"]
+[connection signal="pressed" from="suspension" to="." method="_on_suspension_pressed"]

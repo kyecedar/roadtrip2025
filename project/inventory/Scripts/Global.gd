@@ -8,6 +8,7 @@ var inventory = []
 signal inventory_updated
 var sticks: int = 0
 var apple: int = 0
+@onready var item_icon = $InnerBorder/ItemIcon
 var spawnable_items = [
 	{"name": "apple", "texture": preload("res://inventory/Icons/icon31.png")},
 	{"name": "stick", "texture": preload("res://inventory/Icons/icon9.png")},
@@ -24,6 +25,7 @@ func add_item(item):
 		# Check if the item exists in the inventory and matches both type and effect
 		if inventory[i] != null and inventory[i]["name"] == item["name"]:
 			inventory[i]["quantity"] += item["quantity"]
+			item_icon = item["texture"]
 			inventory_updated.emit()
 			print("Item added", inventory)
 			if item["name"] == "apple":

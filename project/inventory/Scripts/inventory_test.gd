@@ -40,6 +40,7 @@ func _on_upgrade_pressed() -> void:
 	else:
 		upgrade_text.text = "cool it worked enjoy
 		 your bombaclat"
+		
 		Drive.PLAYER_MAX_STEER = 90 ## Degrees.
 		Drive.PLAYER_WHEEL_TURN_SPEED =  8 ## 2.5 is really good handling, 1.5 is okay handling, 0.5 is shit handling.
 		Drive.PLAYER_BODY_LEAN_HELP = 500
@@ -48,3 +49,11 @@ func _on_upgrade_pressed() -> void:
 		Drive.PLAYER_MAX_SPEED = 400 
 		Global.remove_item("apple", 3)
 		Global.remove_item("sticks", 5)
+
+
+func _on_wheels_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_suspension_pressed() -> void:
+	pass # Replace with function body.

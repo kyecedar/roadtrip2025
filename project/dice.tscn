@@ -6,7 +6,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_hegjl"]
 size = Vector3(4.78925, 2.18787, 4.41473)
 
-[node name="collecatble_object" instance=ExtResource("1_fwvvi")]
+[node name="collectable_object" instance=ExtResource("1_fwvvi")]
 script = ExtResource("2_0yw5w")
 
 [node name="Area3D" type="Area3D" parent="." index="0"]

@@ -24,13 +24,15 @@ signal window_unfocus
 #region // Variables.
 
 #region // player.
-var PLAYER_MAX_STEER        : float = 45.0 ## Degrees.
-var PLAYER_WHEEL_TURN_SPEED : float =  1.0 ## 2.5 is really good handling, 1.5 is okay handling, 0.5 is shit handling.
+var PLAYER_MAX_STEER        : float = 40.0 ## Degrees.
+var PLAYER_WHEEL_TURN_SPEED : float =  0.8 ## 2.5 is really good handling, 1.5 is okay handling, 0.5 is shit handling.
 
 var PLAYER_BODY_LEAN_HELP : float = 25.0 ## In degrees.
 
-var PLAYER_ENGINE_FORWARDS_POWER  : float = 15000.0
-var PLAYER_ENGINE_BACKWARDS_POWER : float = 10000.0
+
+var PLAYER_ENGINE_FORWARDS_POWER  : float = 12000.0
+var PLAYER_ENGINE_BACKWARDS_POWER : float = 12000.0
+
 
 var PLAYER_CAMERA_FOLLOW_AMOUNT      : float = 20.0
 var PLAYER_CAMERA_INTERPOLATE_AMOUNT : float =  5.0
@@ -41,7 +43,6 @@ var PLAYER_CAMERA_FORWARD_MIN  : float = 5.0
 var PLAYER_CAMERA_BACKWARD_MIN : float = -6.0
 
 var PLAYER_CAMERA_MAX_ROLL_ROTATION : float = 30.0 ## In degrees.
-
 var PLAYER_MAX_SPEED : float = 80.0 ## Miles the per hour per eagle per fooball field per AR-15 magazines.
 #endregion player.
 
@@ -78,7 +79,7 @@ func _ready() -> void:
 		set_process(false)
 		return
 	
-	#mouse_captured = true
+	mouse_captured = true
 
 	# update paused, calls setters.
 	paused = paused
