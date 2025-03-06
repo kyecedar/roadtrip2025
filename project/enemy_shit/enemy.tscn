@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2ww3om7wxult"]
+
+[ext_resource type="Script" uid="uid://c6wf6xkmrkwkq" path="res://enemy_shit/enemy.gd" id="1_ory0k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7xaro"]
+size = Vector3(1, 0.179413, 3.01648)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7k104"]
+size = Vector3(1, 1.5, 3)
+
+[node name="enemy" type="RigidBody3D" groups=["enemy"]]
+mass = 10.0
+script = ExtResource("1_ory0k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.123785, 1.00824)
+shape = SubResource("BoxShape3D_7xaro")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.653645, 0)
+mesh = SubResource("BoxMesh_7k104")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]

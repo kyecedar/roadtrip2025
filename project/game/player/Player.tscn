@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://8ubsklmdk8ip"]
 
-[ext_resource type="Script" path="res://game/player/player.gd" id="1_os3da"]
+[ext_resource type="Script" uid="uid://crc78glkp1w8m" path="res://game/player/player.gd" id="1_os3da"]
 [ext_resource type="Texture2D" uid="uid://cvd307y53awru" path="res://assets/prototype/kenney/PNG/Dark/texture_09.png" id="2_r3fyy"]
 [ext_resource type="Texture2D" uid="uid://chjrdipjlegtc" path="res://assets/prototype/kenney/PNG/Red/texture_07.png" id="3_liska"]
 

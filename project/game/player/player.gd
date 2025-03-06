@@ -20,8 +20,6 @@ var miles_per_hour : float = 0.0
 @onready var speedometer = $BackBodyMesh/speedometer
 #endregion Variables. ////////////////////
 
-
-
 #region // Functions.
 
 func _ready() -> void:
@@ -48,8 +46,8 @@ func process_go_go(delta: float) -> void:
 
 func _input(event):
 	if event.is_action_pressed("drift"):
-		back_wheel_right.wheel_friction_slip=0.3
-		back_wheel_left.wheel_friction_slip=0.3
+		back_wheel_right.wheel_friction_slip=0.6
+		back_wheel_left.wheel_friction_slip=0.6
 	else:
 		back_wheel_right.wheel_friction_slip=0.8
 		back_wheel_left.wheel_friction_slip=0.8

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b2j6sdi3wn0pp"]
 
 [ext_resource type="FontFile" uid="uid://bi04iecmbt37l" path="res://inventory/Fonts/ARCADECLASSIC.TTF" id="1_5pqrk"]
-[ext_resource type="Script" path="res://inventory/Scripts/inventory_test.gd" id="1_fpraf"]
+[ext_resource type="Script" uid="uid://cg215iyb63uin" path="res://inventory/Scripts/inventory_test.gd" id="1_fpraf"]
 [ext_resource type="PackedScene" uid="uid://bxbnos3drxhfp" path="res://inventory/Scenes/Inventory_UI.tscn" id="2_w8vtx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8lqtr"]

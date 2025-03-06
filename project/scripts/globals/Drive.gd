@@ -44,6 +44,10 @@ var PLAYER_CAMERA_BACKWARD_MIN : float = -6.0
 
 var PLAYER_CAMERA_MAX_ROLL_ROTATION : float = 30.0 ## In degrees.
 var PLAYER_MAX_SPEED : float = 80.0 ## Miles the per hour per eagle per fooball field per AR-15 magazines.
+@onready var back_wheel_right = $RearRight
+@onready var back_wheel_left = $RearLeft
+@onready var front_wheel_right = $FrontRight
+@onready var front_wheel_left = $FrontLeft
 #endregion player.
 
 
