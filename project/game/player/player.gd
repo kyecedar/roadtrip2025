@@ -69,23 +69,21 @@ func process_camera(delta: float) -> void:
 	# look in direction car is turning in.
 	# clamp value for forward to only be facing forward, opposite for back.
 	forward_look_at = forward_look_at.lerp(global_position + Vector3(max(z_dot, Drive.PLAYER_CAMERA_FORWARD_MIN), 0.0, max(z_dot, Drive.PLAYER_CAMERA_FORWARD_MIN)) * transform.basis.z, delta * Drive.PLAYER_CAMERA_INTERPOLATE_AMOUNT)
-	backward_look_at = backward_look_at.lerp(global_position + Vector3(min(z_dot, Drive.PLAYER_CAMERA_BACKWARD_MIN), 0.0, min(z_dot, Drive.PLAYER_CAMERA_BACKWARD_MIN)) * transform.basis.z, delta * Drive.PLAYER_CAMERA_INTERPOLATE_AMOUNT)
 	
 	%ForwardCamera.look_at(forward_look_at)
-	%BackwardCamera.look_at(backward_look_at)
 	
 	# lean camera into turns.
 	if Drive.PLAYER_CAMERA_LEAN_RATIO:
 		%ForwardCamera.rotate_z(x_dot / Drive.PLAYER_CAMERA_LEAN_RATIO)
-		%BackwardCamera.rotate_z(-x_dot / Drive.PLAYER_CAMERA_LEAN_RATIO)
+
 	
 	%ForwardCamera.rotation.z = clamp(%ForwardCamera.rotation.z, -deg_to_rad(Drive.PLAYER_CAMERA_MAX_ROLL_ROTATION), deg_to_rad(Drive.PLAYER_CAMERA_MAX_ROLL_ROTATION))
 	
 	handle_camera_switch()
 
-## If reversing, switch to use BackwardCamera.
+## If swagging, switch to use BackwardCamera.
 func handle_camera_switch() -> void:
-	if Input.is_action_pressed("go_backwards"):
+	if Input.is_action_pressed("look_backwards"):
 		%BackwardCamera.current = true
 	elif Input.is_action_pressed("go_forwards") || linear_velocity.dot(transform.basis.z) > 0:
 		%ForwardCamera.current = true

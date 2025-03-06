@@ -1,26 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cw83n6j2pmhgk"]
+[gd_scene load_steps=8 format=3 uid="uid://cw83n6j2pmhgk"]
 
 [ext_resource type="Script" uid="uid://d1m8o1ulnw2hj" path="res://game/main.gd" id="1_fk7ia"]
 [ext_resource type="PackedScene" uid="uid://8ubsklmdk8ip" path="res://game/player/Player.tscn" id="1_lpjlm"]
 [ext_resource type="PackedScene" uid="uid://mp41sy241txf" path="res://game/prototype/prototype_basics.tscn" id="1_p47xo"]
 [ext_resource type="PackedScene" uid="uid://di7d6r6jmgovb" path="res://inventory/dice.tscn" id="3_xicrr"]
-[ext_resource type="Texture2D" uid="uid://lb5j3k1v0n6w" path="res://assets/prototype/kenney/PNG/Dark/texture_04.png" id="3_yo8gm"]
-[ext_resource type="Script" uid="uid://cw3tyuarw5c57" path="res://game/level_transition.gd" id="4_gj0l0"]
-[ext_resource type="PackedScene" uid="uid://c2ww3om7wxult" path="res://enemy_shit/enemy.tscn" id="5_madmh"]
-
-[sub_resource type="NavigationMesh" id="NavigationMesh_fk7ia"]
-vertices = PackedVector3Array(-149.5, 0.499993, -149.5, -149.5, 0.499993, 149.5, 149.5, 0.499993, 149.5, 149.5, 0.499993, -149.5)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_a1jly"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7tt8"]
-albedo_texture = ExtResource("3_yo8gm")
-uv1_triplanar = true
-
-[sub_resource type="QuadMesh" id="QuadMesh_amyhs"]
-material = SubResource("StandardMaterial3D_e7tt8")
-size = Vector2(300, 300)
+[ext_resource type="Script" uid="uid://bq864k50067ic" path="res://game/level_transition.gd" id="4_gj0l0"]
+[ext_resource type="PackedScene" uid="uid://bi8cqbql3n1qa" path="res://enemy/enemy.tscn" id="5_madmh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dxckh"]
 size = Vector3(147.046, 15.3667, 1)
@@ -30,20 +15,12 @@ script = ExtResource("1_fk7ia")
 
 [node name="Player" parent="." instance=ExtResource("1_lpjlm")]
 unique_name_in_owner = true
+transform = Transform3D(0.0285323, 0, 0.999593, 0, 1, 0, -0.999593, 0, 0.0285323, 0, 0, 0)
 
 [node name="prototype_basics" parent="." instance=ExtResource("1_p47xo")]
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="prototype_basics/env" index="2"]
-navigation_mesh = SubResource("NavigationMesh_fk7ia")
-
-[node name="Floor" type="StaticBody3D" parent="prototype_basics/env/NavigationRegion3D"]
-
-[node name="Collision" type="CollisionShape3D" parent="prototype_basics/env/NavigationRegion3D/Floor"]
-shape = SubResource("WorldBoundaryShape3D_a1jly")
-
-[node name="Mesh" type="MeshInstance3D" parent="prototype_basics/env/NavigationRegion3D/Floor"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("QuadMesh_amyhs")
+[node name="CSGBox3D2" parent="prototype_basics/env/NavigationRegion3D/Obstacles" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2615, 1.5, 0.0228219)
 
 [node name="dice2" parent="." instance=ExtResource("3_xicrr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.482133, 1, 7.61624)
@@ -55,7 +32,7 @@ script = ExtResource("4_gj0l0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.29959, 7.18335, 39.4361)
 shape = SubResource("BoxShape3D_dxckh")
 
-[node name="enemy" parent="." groups=["enemy"] instance=ExtResource("5_madmh")]
+[node name="enemy" parent="." instance=ExtResource("5_madmh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.272, 0, 0)
 
 [connection signal="body_entered" from="level transition" to="level transition" method="_on_body_entered"]

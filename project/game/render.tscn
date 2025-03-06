@@ -16,12 +16,35 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ViewportContainer_Viewport_Main_prototype_basics_env_Obstacles#CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 19.6108, 15, -68.0354)
+size = Vector3(12, 30, 12)
+material = SubResource("StandardMaterial3D_2tdkm")
+
+[node name="ViewportContainer_Viewport_Main_prototype_basics_env_Obstacles#CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 10.4892, 11.5, -67.9646)
+size = Vector3(12, 23, 12)
+material = SubResource("StandardMaterial3D_2tdkm")
+
 [node name="PlayerExportInterface" parent="." instance=ExtResource("1_ad7tw")]
+max_steer = 40.0
+engine_forwards_power = 12000.0
+engine_backwards_power = 12000.0
 
 [node name="DatPau\'see" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="ViewportContainer_Viewport_Main_prototype_basics_env_Obstacles#CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 112.965, 15, 2.34628)
+size = Vector3(12, 30, 12)
+material = SubResource("StandardMaterial3D_2tdkm")
+
+[node name="ViewportContainer_Viewport_Main_prototype_basics_env_Obstacles#CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 104.135, 11.5, 0.0537188)
+size = Vector3(12, 23, 12)
+material = SubResource("StandardMaterial3D_2tdkm")
 
 [node name="ViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1
@@ -39,25 +62,8 @@ render_target_update_mode = 4
 
 [node name="Main" parent="ViewportContainer/Viewport" instance=ExtResource("1_3tvqy")]
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="ViewportContainer/Viewport/Main/prototype_basics/env/Obstacles" index="0"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 19.6108, 15, -68.0354)
-size = Vector3(12, 30, 12)
-material = SubResource("StandardMaterial3D_2tdkm")
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="ViewportContainer/Viewport/Main/prototype_basics/env/Obstacles" index="1"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 10.4892, 11.5, -67.9646)
-size = Vector3(12, 23, 12)
-material = SubResource("StandardMaterial3D_2tdkm")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="ViewportContainer/Viewport/Main/prototype_basics/env/Obstacles" index="4"]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 112.965, 15, 2.34628)
-size = Vector3(12, 30, 12)
-material = SubResource("StandardMaterial3D_2tdkm")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="ViewportContainer/Viewport/Main/prototype_basics/env/Obstacles" index="5"]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 104.135, 11.5, 0.0537188)
-size = Vector3(12, 23, 12)
-material = SubResource("StandardMaterial3D_2tdkm")
+[node name="enemy" parent="ViewportContainer/Viewport/Main" index="4"]
+script = null
 
 [editable path="ViewportContainer/Viewport/Main"]
 [editable path="ViewportContainer/Viewport/Main/prototype_basics"]
