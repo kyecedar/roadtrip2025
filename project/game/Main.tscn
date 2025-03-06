@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://8ubsklmdk8ip" path="res://game/player/Player.tscn" id="1_lpjlm"]
 [ext_resource type="PackedScene" uid="uid://mp41sy241txf" path="res://game/prototype/prototype_basics.tscn" id="1_p47xo"]
 [ext_resource type="PackedScene" uid="uid://di7d6r6jmgovb" path="res://inventory/dice.tscn" id="3_xicrr"]
-[ext_resource type="Script" uid="uid://bq864k50067ic" path="res://game/level_transition.gd" id="4_gj0l0"]
+[ext_resource type="Script" uid="uid://cw3tyuarw5c57" path="res://game/level_transition.gd" id="4_gj0l0"]
 [ext_resource type="PackedScene" uid="uid://bi8cqbql3n1qa" path="res://enemy/enemy.tscn" id="5_madmh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dxckh"]
