@@ -3,38 +3,39 @@
 [ext_resource type="Script" uid="uid://d1m8o1ulnw2hj" path="res://game/main.gd" id="1_fk7ia"]
 [ext_resource type="PackedScene" uid="uid://8ubsklmdk8ip" path="res://game/player/Player.tscn" id="1_lpjlm"]
 [ext_resource type="PackedScene" uid="uid://mp41sy241txf" path="res://game/prototype/prototype_basics.tscn" id="1_p47xo"]
-[ext_resource type="PackedScene" uid="uid://di7d6r6jmgovb" path="res://inventory/dice.tscn" id="3_xicrr"]
-[ext_resource type="Script" uid="uid://cw3tyuarw5c57" path="res://game/level_transition.gd" id="4_gj0l0"]
+[ext_resource type="PackedScene" uid="uid://di7d6r6jmgovb" path="res://dice.tscn" id="3_xicrr"]
+[ext_resource type="Script" uid="uid://bq864k50067ic" path="res://game/level_transition.gd" id="4_gj0l0"]
 [ext_resource type="PackedScene" uid="uid://bi8cqbql3n1qa" path="res://enemy/enemy.tscn" id="5_madmh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dxckh"]
-size = Vector3(147.046, 15.3667, 1)
+size = Vector3(117.131, 15.3667, 1)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_fk7ia")
 
-[node name="Player" parent="." instance=ExtResource("1_lpjlm")]
-unique_name_in_owner = true
-transform = Transform3D(0.0285323, 0, 0.999593, 0, 1, 0, -0.999593, 0, 0.0285323, 0, 0, 0)
-
 [node name="prototype_basics" parent="." instance=ExtResource("1_p47xo")]
 
-[node name="CSGBox3D2" parent="prototype_basics/env/NavigationRegion3D/Obstacles" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2615, 1.5, 0.0228219)
+[node name="Player" parent="." instance=ExtResource("1_lpjlm")]
+unique_name_in_owner = true
+transform = Transform3D(0.0285323, 0, 0.999593, 0, 1, 0, -0.999593, 0, 0.0285323, 0, 0, -83.2288)
 
 [node name="dice2" parent="." instance=ExtResource("3_xicrr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.482133, 1, 7.61624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.0406, 5.07522, -3.15815)
 
 [node name="level transition" type="Area3D" parent="."]
 script = ExtResource("4_gj0l0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="level transition"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.29959, 7.18335, 39.4361)
+transform = Transform3D(0.950554, 0, -0.31056, 0, 1, 0, 0.31056, 0, 0.950554, 172.847, 7.18335, 152.267)
 shape = SubResource("BoxShape3D_dxckh")
 
 [node name="enemy" parent="." instance=ExtResource("5_madmh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.272, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.8359, 0, -93.1349)
+
+[node name="enemy2" parent="." instance=ExtResource("5_madmh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.5692, 0, -17.2154)
+
+[node name="enemy3" parent="." instance=ExtResource("5_madmh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.2378, 0, -66.532)
 
 [connection signal="body_entered" from="level transition" to="level transition" method="_on_body_entered"]
-
-[editable path="prototype_basics"]
