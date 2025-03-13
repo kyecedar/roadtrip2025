@@ -21,7 +21,7 @@ albedo_texture = ExtResource("2_r3fyy")
 uv1_triplanar = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2lptk"]
-size = Vector3(1.9573, 1.2, 4.65664)
+size = Vector3(1.9573, 1.2, 4.47285)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dbo52"]
 albedo_texture = ExtResource("3_liska")
@@ -31,7 +31,7 @@ uv1_triplanar = true
 mass = 1000.0
 gravity_scale = 2.0
 center_of_mass_mode = 1
-center_of_mass = Vector3(0, -1, 0)
+center_of_mass = Vector3(0, -0.2, 0)
 script = ExtResource("1_os3da")
 
 [node name="FrontLeft" type="VehicleWheel3D" parent="."]
@@ -40,9 +40,8 @@ use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
 wheel_friction_slip = 0.9
-suspension_travel = 0.3
 suspension_stiffness = 50.0
-suspension_max_force = 300.0
+suspension_max_force = 500.0
 damping_compression = 0.2
 damping_relaxation = 0.3
 
@@ -59,9 +58,8 @@ use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
 wheel_friction_slip = 0.9
-suspension_travel = 0.3
 suspension_stiffness = 50.0
-suspension_max_force = 300.0
+suspension_max_force = 500.0
 damping_compression = 0.2
 damping_relaxation = 0.3
 
@@ -78,9 +76,8 @@ use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
 wheel_friction_slip = 0.8
-suspension_travel = 0.3
 suspension_stiffness = 50.0
-suspension_max_force = 300.0
+suspension_max_force = 500.0
 damping_compression = 0.2
 damping_relaxation = 0.3
 
@@ -97,9 +94,8 @@ use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
 wheel_friction_slip = 0.8
-suspension_travel = 0.3
 suspension_stiffness = 50.0
-suspension_max_force = 300.0
+suspension_max_force = 500.0
 damping_compression = 0.2
 damping_relaxation = 0.3
 
@@ -111,7 +107,7 @@ sides = 12
 material = SubResource("StandardMaterial3D_pvo3q")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0201538, 1.05, -0.12168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0201538, 1.05, -0.213574)
 shape = SubResource("BoxShape3D_2lptk")
 
 [node name="MainBodyMesh" type="CSGBox3D" parent="."]

@@ -1,5 +1,5 @@
 extends VehicleBody3D
-
+class_name Player
 
 # TODO:
 # add deflection off walls.

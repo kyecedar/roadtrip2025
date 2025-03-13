@@ -33,9 +33,8 @@ shape = SubResource("BoxShape3D_dxckh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.8359, 0, -93.1349)
 
 [node name="enemy2" parent="." instance=ExtResource("5_madmh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.5692, 0, -17.2154)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.0098, 0, -46.9538)
 
 [node name="enemy3" parent="." instance=ExtResource("5_madmh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.2378, 0, -66.532)
 
 [connection signal="body_entered" from="level transition" to="level transition" method="_on_body_entered"]

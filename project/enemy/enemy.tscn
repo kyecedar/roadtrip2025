@@ -39,4 +39,20 @@ shape = SubResource("BoxShape3D_scxef")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00637817, 0.748047, 0.0166016)
 shape = SubResource("BoxShape3D_2mvqj")
 
+[node name="player_collision" type="Timer" parent="."]
+process_callback = 0
+wait_time = 3.0
+one_shot = true
+
+[node name="enemy_collision" type="Timer" parent="."]
+process_callback = 0
+wait_time = 3.0
+one_shot = true
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.66219, 1.51813)
+target_position = Vector3(0, 0, -50)
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="player_collision" to="." method="_on_player_collision_timeout"]
+[connection signal="timeout" from="enemy_collision" to="." method="_on_enemy_collision_timeout"]

@@ -95,7 +95,7 @@ size = Vector3(113.663, 5.85449, 1)
 material = SubResource("StandardMaterial3D_xqack")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="env/NavigationRegion3D/Obstacles/CSGBox3D3"]
-transform = Transform3D(0.992872, 0, 0.119184, 0, 1, 0, -0.119184, 0, 0.992872, 13.7854, 0.0727539, -41.7358)
+transform = Transform3D(0.999241, 0, 0.0389635, 0, 1, 0, -0.0389635, 0, 0.999241, 14.0905, 0.0727539, -40.4887)
 size = Vector3(67.7571, 5.85449, 1)
 material = SubResource("StandardMaterial3D_xqack")
 
