@@ -1,51 +1,69 @@
 extends CharacterBody3D
 
+## If the enemy will chase the player or not.
+@export var active : bool = true :
+	set(value):
+		active = value
+		
+		set_physics_process(active)
+
+
+@onready var e_collide : Timer = $enemy_collision
+@onready var p_collide : Timer = $player_collision
+@onready var front : Node3D = $front
+@onready var raycast : RayCast3D = $RayCast3D
+@onready var nav : NavigationAgent3D = $NavigationAgent3D
+
 var state_machine
-var speed: float = 20
-var gravity = 1
-var current_speed : float = 0
-@onready var e_collide = $enemy_collision
-@onready var p_collide = $player_collision
-@onready var front = $front
-@onready var raycast = $RayCast3D
-@onready var nav = $NavigationAgent3D
+var speed : float = 20.0
+var gravity : float = 1.0
+var current_speed : float = 0.0
+
 var chase = false
-func update_target_location(target_location):
+
+
+func _ready() -> void:
+	# 
+	pass
+
+
+func update_target_location(target_location: Vector3) -> void:
 	nav.set_target_position(target_location)
-	self.look_at(target_location)
-func _physics_process(delta):
+	look_at(target_location)
+
+func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	else:
-		velocity.y -= 1
+		velocity.y -= 1.0
+	
 	#if raycast.get_collider() is Player:
 		#chase = true
 	#if chase == true:
 	var z_dot : float = velocity.dot(transform.basis.z)
+	
 	current_speed = abs(z_dot) * 2.236936
-	var current_location = global_transform.origin
-	var next_location = nav.get_next_path_position()
-	var new_velocity = (next_location-current_location).normalized() * speed
+	
+	var current_location : Vector3 = global_transform.origin
+	var next_location : Vector3 = nav.get_next_path_position()
+	var new_velocity : Vector3 = (next_location-current_location).normalized() * speed
+	
 	velocity = velocity.move_toward(new_velocity,0.25)
-	#print(current_speed)
+	
 	move_and_slide()
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
-		speed = (speed - 22)
+		speed = (speed - 22.0)
 		p_collide.start()
-		print(speed)
 	if body.is_in_group("enemy"):
-			speed = (speed + 5)
+			speed = (speed + 5.0)
 			e_collide.start()
-			print(speed)
 
 
 func _on_enemy_collision_timeout() -> void:
-		speed = 20 
-		print(speed)
+		speed = 20.0
 
 func _on_player_collision_timeout() -> void:
-	speed = 20
-	print(speed)
+	speed = 20.0

@@ -83,7 +83,7 @@ func _ready() -> void:
 		set_process(false)
 		return
 	
-	mouse_captured = true
+	#mouse_captured = true
 
 	# update paused, calls setters.
 	paused = paused
