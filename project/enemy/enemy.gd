@@ -57,13 +57,16 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		speed = (speed - 22.0)
 		p_collide.start()
+		print(speed)
+	
 	if body.is_in_group("enemy"):
-			speed = (speed + 5.0)
-			e_collide.start()
+		speed = (speed + 5.0)
+		e_collide.start()
+		print(speed)
 
 
 func _on_enemy_collision_timeout() -> void:
-		speed = 20.0
+	speed = 20.0
 
 func _on_player_collision_timeout() -> void:
 	speed = 20.0

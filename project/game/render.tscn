@@ -1,12 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccbs5tkioue8x"]
+[gd_scene load_steps=3 format=3 uid="uid://ccbs5tkioue8x"]
 
 [ext_resource type="PackedScene" uid="uid://cw83n6j2pmhgk" path="res://game/Main.tscn" id="1_3tvqy"]
 [ext_resource type="PackedScene" uid="uid://b5r450767l42x" path="res://scripts/export_interfaces/playerExportInterface.tscn" id="1_ad7tw"]
-[ext_resource type="Texture2D" uid="uid://bmg8qqmb8a0g2" path="res://assets/prototype/kenney/PNG/Orange/texture_10.png" id="3_07ik2"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2tdkm"]
-albedo_texture = ExtResource("3_07ik2")
-uv1_triplanar = true
 
 [node name="Render" type="Control"]
 layout_mode = 3
@@ -15,16 +10,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="ViewportContainer_Viewport_Main_prototype_basics_env_Obstacles#CSGBox3D5" type="CSGBox3D" parent="."]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 19.6108, 15, -68.0354)
-size = Vector3(12, 30, 12)
-material = SubResource("StandardMaterial3D_2tdkm")
-
-[node name="ViewportContainer_Viewport_Main_prototype_basics_env_Obstacles#CSGBox3D6" type="CSGBox3D" parent="."]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 10.4892, 11.5, -67.9646)
-size = Vector3(12, 23, 12)
-material = SubResource("StandardMaterial3D_2tdkm")
 
 [node name="PlayerExportInterface" parent="." instance=ExtResource("1_ad7tw")]
 max_steer = 40.0
@@ -35,16 +20,6 @@ engine_backwards_power = 12000.0
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="ViewportContainer_Viewport_Main_prototype_basics_env_Obstacles#CSGBox3D3" type="CSGBox3D" parent="."]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 112.965, 15, 2.34628)
-size = Vector3(12, 30, 12)
-material = SubResource("StandardMaterial3D_2tdkm")
-
-[node name="ViewportContainer_Viewport_Main_prototype_basics_env_Obstacles#CSGBox3D4" type="CSGBox3D" parent="."]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 104.135, 11.5, 0.0537188)
-size = Vector3(12, 23, 12)
-material = SubResource("StandardMaterial3D_2tdkm")
 
 [node name="ViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1
