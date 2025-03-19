@@ -24,6 +24,7 @@ var chase = false
 
 func _ready() -> void:
 	# 
+	active = active
 	pass
 
 
@@ -36,6 +37,8 @@ func _physics_process(delta: float) -> void:
 		velocity.y -= gravity * delta
 	else:
 		velocity.y -= 1.0
+	
+	update_target_location(Roadtrip.enemy_target_position)
 	
 	#if raycast.get_collider() is Player:
 		#chase = true
@@ -54,15 +57,13 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
-		speed = (speed - 22.0)
+	if body.is_in_group("Player"):
+		speed -= 22.0
 		p_collide.start()
-		print(speed)
 	
 	if body.is_in_group("enemy"):
-		speed = (speed + 5.0)
+		speed += 5.0
 		e_collide.start()
-		print(speed)
 
 
 func _on_enemy_collision_timeout() -> void:

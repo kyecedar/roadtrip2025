@@ -10,8 +10,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_dxckh"]
 size = Vector3(117.131, 15.3667, 1)
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("target")]
 script = ExtResource("1_fk7ia")
+target = NodePath("Player")
 
 [node name="prototype_basics" parent="." instance=ExtResource("1_p47xo")]
 

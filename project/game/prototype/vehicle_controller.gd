@@ -48,7 +48,6 @@ func process_camera_focal(delta: float) -> void:
 func process_camera_fov(delta: float) -> void:
 	var fov_adjustment_speed : float = clampf(vehicle_node.speed * 3.6 - min_speed_for_fov_adjustment, 0.0, max_speed_for_fov_adjustment - min_speed_for_fov_adjustment)
 	var fov_adjustment_amount : float = max(fov_adjustment_speed / (max_speed_for_fov_adjustment - min_speed_for_fov_adjustment), 0)
-	print(fov_adjustment_speed)
 	
 	speed_fov_adjustment = move_toward(speed_fov_adjustment, fov_adjustment_amount, delta)
 	

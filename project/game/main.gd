@@ -2,9 +2,9 @@ extends Node3D
 
 #region // PATHFINDING. ////////////////////////////////////////////////////////
 
-@onready var target = %Player
+@export var target : Node3D
 
-func _physics_process(delta):
-	get_tree().call_group("enemy", "update_target_location", target.global_transform.origin) 
+func _process(_delta: float) -> void:
+	Roadtrip.enemy_target_position = target.global_position
 
 #endregion PATHFINDING.

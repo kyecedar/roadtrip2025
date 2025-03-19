@@ -5,7 +5,7 @@ extends Control
 
 func _ready():
 	# Connect function to signal to update inventory UI
-	Global.inventory_updated.connect(_on_inventory_updated)
+	Roadtrip.inventory_updated.connect(_on_inventory_updated)
 	_on_inventory_updated()
 
 # Update inventory UI
@@ -13,8 +13,8 @@ func _on_inventory_updated():
 	# Clear existing slots
 	clear_grid_container()
 	# Add slots for each inventory position
-	for item in Global.inventory:
-		var slot = Global.inventory_slot_scene.instantiate()
+	for item in Roadtrip.inventory:
+		var slot = Roadtrip.inventory_slot_scene.instantiate()
 		grid_container.add_child(slot)
 		if item != null:
 			slot.set_item(item)

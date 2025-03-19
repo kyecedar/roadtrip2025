@@ -17,63 +17,65 @@ extends RayCast3D
 ## try parenting it to a [Node3D] and using that as the wheel node instead.
 @export var wheel_node : Node3D
 
-var wheel_mass := 15.0
-var tire_radius := 0.3
-var tire_width := 205.0
-var ackermann := 0.15
-var contact_patch := 0.2
-var braking_grip_multiplier := 1.4
-var surface_type := ""
-var tire_stiffnesses := { "Road" : 5.0, "Dirt" : 0.5, "Grass" : 0.5 }
-var coefficient_of_friction := { "Road" : 2.0, "Dirt" : 1.4, "Grass" : 1.0 }
-var rolling_resistance := { "Road" : 1.0, "Dirt" : 2.0, "Grass" : 4.0 }
-var lateral_grip_assist := { "Road" : 0.05, "Dirt" : 0.0, "Grass" : 0.0}
-var longitudinal_grip_ratio := { "Road" : 0.5, "Dirt": 0.5, "Grass" : 0.5}
+const SURFACE_PREFIX : String = "Surface"
 
-var spring_length := 0.15
-var spring_rate := 0.0
-var slow_bump := 0.0
-var fast_bump := 0.0
-var slow_rebound := 0.0
-var fast_rebound := 0.0
-var fast_damp_threshold := 127.0
-var antiroll := 0.0
-var toe := 0.0
-var bump_stop_multiplier := 1.0
-var wheel_to_body_torque_multiplier := 0.0
-var mass_over_wheel := 0.0
+var wheel_mass              : float = 15.0
+var tire_radius             : float = 0.3
+var tire_width              : float = 205.0
+var ackermann               : float = 0.15
+var contact_patch           : float = 0.2
+var braking_grip_multiplier : float = 1.4
+var surface_type            : String = ""
+var tire_stiffnesses        : Dictionary = { "Road" : 5.0, "Dirt" : 0.5, "Grass" : 0.5 }
+var coefficient_of_friction : Dictionary = { "Road" : 2.0, "Dirt" : 1.4, "Grass" : 1.0 }
+var rolling_resistance      : Dictionary = { "Road" : 1.0, "Dirt" : 2.0, "Grass" : 4.0 }
+var lateral_grip_assist     : Dictionary = { "Road" : 0.05, "Dirt" : 0.0, "Grass" : 0.0 }
+var longitudinal_grip_ratio : Dictionary = { "Road" : 0.5, "Dirt": 0.5, "Grass" : 0.5 }
 
-var wheel_moment := 0.0
-var spin := 0.0
-var spin_velocity_diff := 0.0
-var spring_force := 0.0
-var applied_torque := 0.0
-var local_velocity := Vector3.ZERO
-var previous_velocity := Vector3.ZERO
-var previous_global_position := Vector3.ZERO
-var force_vector := Vector2.ZERO
-var slip_vector := Vector2.ZERO
-var previous_compression := 0.0
-var spring_current_length := 0.0
-var max_spring_length := 0.0
-var antiroll_force := 0.0
-var damping_force := 0.0
-var steering_ratio := 0.0
-var last_collider
-var last_collision_point := Vector3.ZERO
-var last_collision_normal := Vector3.ZERO
-var current_cof := 0.0
-var current_rolling_resistance := 0.0
-var current_lateral_grip_assist := 0.0
-var current_longitudinal_grip_ratio := 0.0
-var current_tire_stiffness := 0.0
-var abs_enable_time := 0.0
-var abs_pulse_time := 0.3
-var abs_spin_difference_threshold := -12.0
-var limit_spin := false
-var is_driven := false
-var opposite_wheel : Wheel
-var beam_axle := 0.0
+var spring_length                   : float = 0.15
+var spring_rate                     : float = 0.0
+var slow_bump                       : float = 0.0
+var fast_bump                       : float = 0.0
+var slow_rebound                    : float = 0.0
+var fast_rebound                    : float = 0.0
+var fast_damp_threshold             : float = 127.0
+var antiroll                        : float = 0.0
+var toe                             : float = 0.0
+var bump_stop_multiplier            : float = 1.0
+var wheel_to_body_torque_multiplier : float = 0.0
+var mass_over_wheel                 : float = 0.0
+
+var wheel_moment                    : float = 0.0
+var spin                            : float = 0.0
+var spin_velocity_diff              : float = 0.0
+var spring_force                    : float = 0.0
+var applied_torque                  : float = 0.0
+var local_velocity                  : Vector3 = Vector3.ZERO
+var previous_velocity               : Vector3 = Vector3.ZERO
+var previous_global_position        : Vector3 = Vector3.ZERO
+var force_vector                    : Vector2 = Vector2.ZERO
+var slip_vector                     : Vector2 = Vector2.ZERO
+var previous_compression            : float = 0.0
+var spring_current_length           : float = 0.0
+var max_spring_length               : float = 0.0
+var antiroll_force                  : float = 0.0
+var damping_force                   : float = 0.0
+var steering_ratio                  : float = 0.0
+var last_collider                   : Object
+var last_collision_point            : Vector3 = Vector3.ZERO
+var last_collision_normal           : Vector3 = Vector3.ZERO
+var current_cof                     : float = 0.0
+var current_rolling_resistance      : float = 0.0
+var current_lateral_grip_assist     : float = 0.0
+var current_longitudinal_grip_ratio : float = 0.0
+var current_tire_stiffness          : float = 0.0
+var abs_enable_time                 : float = 0.0
+var abs_pulse_time                  : float = 0.3
+var abs_spin_difference_threshold   : float = -12.0
+var limit_spin                      : bool = false
+var is_driven                       : bool = false
+var opposite_wheel                  : Wheel
+var beam_axle                       : float = 0.0
 
 var vehicle : Vehicle
 
@@ -97,7 +99,7 @@ func initialize() -> void:
 	current_longitudinal_grip_ratio = longitudinal_grip_ratio[surface_type]
 	current_tire_stiffness = 1000000.0 + 8000000.0 * tire_stiffnesses[surface_type]
 
-func steer(input : float, max_steering_angle : float):
+func steer(input: float, max_steering_angle: float):
 	input *= steering_ratio
 	rotation.y = (max_steering_angle * (input + (1 - cos(input * 0.5 * PI)) * ackermann)) + toe
 
@@ -157,10 +159,15 @@ func process_forces(opposite_compression : float, braking : bool, delta : float)
 		last_collider = get_collider()
 		last_collision_point = get_collision_point()
 		last_collision_normal = get_collision_normal()
+		
 		var surface_groups : Array[StringName] = last_collider.get_groups()
+		
 		if surface_groups.size() > 0:
-			if surface_type != surface_groups[0]:
-				surface_type = surface_groups[0]
+			#print(surface_groups)
+			if surface_groups[0].begins_with(SURFACE_PREFIX) and surface_type != surface_groups[0]:
+				print(surface_groups[0])
+				
+				surface_type = surface_groups[0].substr(SURFACE_PREFIX.length())
 				current_cof = coefficient_of_friction[surface_type]
 				current_rolling_resistance = rolling_resistance[surface_type]
 				current_lateral_grip_assist = lateral_grip_assist[surface_type]
@@ -225,9 +232,9 @@ func process_suspension(opposite_compression : float, delta : float) -> float:
 	
 	## If the suspension is bottomed out, apply some additional forces to help keep the vehicle body
 	## from colliding with the surface.
-	var bottom_out_damping := 0.0
-	var bottom_out_damping_fast := 0.0
-	var bottom_out_force := 0.0
+	var bottom_out_damping : float = 0.0
+	var bottom_out_damping_fast : float = 0.0
+	var bottom_out_force : float = 0.0
 	if bottom_out:
 		var gravity_on_spring := clampf(global_transform.basis.y.dot(-vehicle.current_gravity.normalized()), 0.0, 1.0)
 		bottom_out_force = (((mass_over_wheel * clampf(spring_speed_mm_per_seconds * 0.001, 0.0, 5.0)) / delta) + (mass_over_wheel * vehicle.current_gravity.length() * gravity_on_spring)) * bump_stop_multiplier
@@ -259,14 +266,14 @@ func process_suspension(opposite_compression : float, delta : float) -> float:
 func process_tires(braking : bool, delta : float):
 	## This is a modified version of the brush tire model that removes the friction falloff beyond
 	## the peak grip level.
-	var local_planar := Vector2(local_velocity.x, local_velocity.z).normalized() * clampf(local_velocity.length(), 0.0, 1.0)
+	var local_planar : Vector2 = Vector2(local_velocity.x, local_velocity.z).normalized() * clampf(local_velocity.length(), 0.0, 1.0)
 	slip_vector.x = asin(clampf(-local_planar.x, -1.0, 1.0))
 	slip_vector.y = 0.0
 	
 	var wheel_velocity := spin * tire_radius
 	spin_velocity_diff = wheel_velocity + local_velocity.z
 	var needed_rolling_force := ((spin_velocity_diff * wheel_moment) / tire_radius) / delta
-	var max_y_force := 0.0
+	var max_y_force : float = 0.0
 	
 	## Because the amount of force the tire applies is based on the amount of slip,
 	## a maximum force is calculated based on the applied engine torque to prevent
@@ -276,7 +283,7 @@ func process_tires(braking : bool, delta : float):
 	else:
 		max_y_force = absf(needed_rolling_force / tire_radius)
 	
-	var max_x_force := 0.0
+	var max_x_force : float = 0.0
 	max_x_force = absf(mass_over_wheel * local_velocity.x) / delta
 	
 	var z_sign := signf(-local_velocity.z)
@@ -288,7 +295,7 @@ func process_tires(braking : bool, delta : float):
 	if slip_vector.is_zero_approx():
 		slip_vector = Vector2(0.0001, 0.0001)
 	
-	var cornering_stiffness := 0.5 * current_tire_stiffness * pow(contact_patch, 2.0)
+	var cornering_stiffness : float = 0.5 * current_tire_stiffness * pow(contact_patch, 2.0)
 	var friction := current_cof * spring_force - (spring_force / (tire_width * contact_patch * 0.2))
 	var deflect := 1.0 / (sqrt(pow(cornering_stiffness * slip_vector.y, 2.0) + pow(cornering_stiffness * slip_vector.x, 2.0)))
 	
@@ -318,7 +325,7 @@ func process_tires(braking : bool, delta : float):
 	force_vector.y -= process_rolling_resistance() * signf(local_velocity.z)
 
 func process_rolling_resistance() -> float:
-	var rolling_resistance_coefficient := 0.005 + (0.5 * (0.01 + (0.0095 * pow(local_velocity.z * 0.036, 2))))
+	var rolling_resistance_coefficient : float = 0.005 + (0.5 * (0.01 + (0.0095 * pow(local_velocity.z * 0.036, 2))))
 	return rolling_resistance_coefficient * spring_force * current_rolling_resistance
 
 func get_reaction_torque() -> float:
