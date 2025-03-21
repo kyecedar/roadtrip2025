@@ -36,14 +36,14 @@ func _draw():
 			circle_position = current_camera.unproject_position(circle_position) + circle["screen_offset"]
 		
 		if circle["empty"]:
-			draw_arc(circle_position, circle["radius"], 0, 2*PI, 100, circle["color"], 2.0)
+			draw_arc(circle_position, circle["radius"], 0.0, 2.0 * PI, 100.0, circle["color"], 2.0)
 		else:
 			draw_circle(circle_position, circle["radius"], circle["color"])
 
 
 
 func draw_debug_line(name : String, position, vector, color : Color, screen_space := false, screen_offset := Vector2(0,0)):
-	var properties := {}
+	var properties : Dictionary[String, Variant] = {}
 	properties["position"] = position
 	properties["vector"] = vector
 	properties["color"] = color
@@ -52,8 +52,8 @@ func draw_debug_line(name : String, position, vector, color : Color, screen_spac
 	lines_to_draw[name] = properties
 	dirty = true
 
-func draw_debug_circle(name : String, position, radius : float, color : Color, empty := false, screen_space := false, screen_offset := Vector2(0,0)):
-	var properties := {}
+func draw_debug_circle(name: String, position, radius: float, color: Color, empty: bool = false, screen_space: bool = false, screen_offset : Vector2 = Vector2(0,0)):
+	var properties : Dictionary[String, Variant] = {}
 	properties["position"] = position
 	properties["radius"] = radius
 	properties["color"] = color
@@ -64,7 +64,7 @@ func draw_debug_circle(name : String, position, radius : float, color : Color, e
 	dirty = true
 
 func draw_debug_text(name : String, text : String, position, color : Color, screen_space := false, screen_offset := Vector2(0,0)):
-	var properties := {}
+	var properties : Dictionary[String, Variant] = {}
 	properties["position"] = position
 	properties["text"] = text
 	properties["color"] = color

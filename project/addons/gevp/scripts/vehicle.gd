@@ -18,25 +18,25 @@ extends RigidBody3D
 ## The rate that the steering input changes in order to smooth
 ## out direction changes to the wheel.
 ## Steering input is between -1 and 1. Speed is in units per second.
-@export var steering_speed : float = 4.25
+@export var steering_speed : float = 10
 ## The rate that the steering input changes when steering back to center.
 ## Speed is in units per second.
-@export var countersteer_speed : float = 11.0
+@export var countersteer_speed : float = 5
 ## Reduces steering input based on the vehicle's speed.
 ## Steering speed is divided by the velocity at this magnitude.
 ## The larger the number, the slower the steering at speed.
 @export var steering_speed_decay : float = 0.20
 ## Further steering input is prevented if the wheels' lateral slip is greater than this number.
-@export var steering_slip_assist : float = 0.15
+@export var steering_slip_assist : float = 0.5
 ## The magnitude to adjust steering toward the direction of travel based on the vehicle's lateral velocity.
-@export var countersteer_assist : float = 0.9
+@export var countersteer_assist : float = 0.75
 ## Steering input is raised to the power of this number.
 ## This has the effect of slowing steering input near the limits.
-@export var steering_exponent : float = 1.5
+@export var steering_exponent : float = 4
 ## The maximum steering angle in radians.
 ## [br][br]
 ## [b]Note:[/b] This property is edited in the inspector in degrees. If you want to use degrees in a script, use [code]deg_to_rad[/code].
-@export_range(0, 360, 0.1, "radians_as_degrees") var max_steering_angle : float = deg_to_rad(40.0)
+@export_range(0, 360, 0.1, "radians_as_degrees") var max_steering_angle : float = deg_to_rad(68.0)
 
 @export_subgroup("Front Axle", "front_")
 ## The ratio that the wheels turn based on steering input.
@@ -53,36 +53,39 @@ extends RigidBody3D
 @export_group("Throttle and Braking")
 ## The rate the throttle input changes to smooth input.
 ## Throttle input is between 0 and 1. Speed is in units per second.
-@export var throttle_speed : float = 25.0
+@export var throttle_speed : float = 20
 ## Multiply the throttle speed by this based on steering input.
 @export var throttle_steering_adjust : float = 0.1
 ## The rate braking input changes to smooth input.
 ## Braking input is between 0 and 1. Speed is in units per second.
-@export var braking_speed : float = 15.0
-## Multiplies the automatically calculated brake force.
-@export var brake_force_multiplier : float = 1.0
+@export var braking_speed : float = 2.0
+## Multiplies the automatically calculated brake force. (higher is better)
+@export var brake_force_multiplier : float = 0.5
 ## Ratio of total brake force applied as front wheels : back wheels. If this value is
 ## below 0.0, this value will be automatically calculated instead.
 @export var front_brake_bias : float = -1.0
 ## Prevents engine power from causing the tires to slip beyond this value.
 ## Values below 0 disable the effect.
 @export var traction_control_max_slip : float = 8.0
+#idk what this does 8 is normal
 
 @export_subgroup("Front Axle", "front_")
 ## How long the ABS releases the brake, in seconds, when the
 ## spin threshold is crossed.
-@export var front_abs_pulse_time : float = 0.03
+@export var front_abs_pulse_time : float = 0
 ## The difference in speed required between the wheel and the
 ## driving surface for ABS to engage.
-@export var front_abs_spin_difference_threshold : float = 12.0
+## fuck abs (normal is 12)
+@export var front_abs_spin_difference_threshold : float = 10000
 
 @export_subgroup("Rear Axle", "rear_")
 ## How long the ABS releases the brake, in seconds, when the
 ## spin threshold is crossed.
-@export var rear_abs_pulse_time : float = 0.03
+@export var rear_abs_pulse_time : float = 0
 ## The difference in speed required between the wheel and the
 ## driving surface for ABS to engage.
-@export var rear_abs_spin_difference_threshold : float = 12.0
+## fuck abs (normal is 12)
+@export var rear_abs_spin_difference_threshold : float = 1000
 
 @export_group("Stability")
 ## Stablity applies torque forces to the vehicle body when the body angle
@@ -90,11 +93,11 @@ extends RigidBody3D
 @export var enable_stability : bool = true
 ## The yaw angle the vehicle must reach before stability is applied.
 ## Based on the dot product, 0 being straight, 1 being 90 degrees
-@export var stability_yaw_engage_angle : float = 0.0
+@export var stability_yaw_engage_angle : float = 0.1
 ## Strength multiplier for the applied yaw correction.
-@export var stability_yaw_strength : float = 6.0
+@export var stability_yaw_strength : float = 2.0
 ## Additional strength multiplier for a grounded vehicle to overcome traction.
-@export var stability_yaw_ground_multiplier : float = 2.0
+@export var stability_yaw_ground_multiplier : float = 4.0
 ## A multiplier for the torque used to keep the vehicle upright while airbourn.
 @export var stability_upright_spring : float = 1.0
 ## A multiplier for the torque used to dampen rotation while airborne.
@@ -102,10 +105,10 @@ extends RigidBody3D
 
 
 @export_group("Motor")
-## Maximum motor torque in NM.
-@export var max_torque : float = 300.0
-## Maximum motor RPM.
-@export var max_rpm : float = 7000.0
+## Maximum motor torque in NM. HOW FAST YOU GET FASTA
+var max_torque = Roadtrip.max_torque
+## Maximum motor RPM. FASTA
+var max_rpm = Roadtrip.max_rpm
 ## Idle motor RPM.
 @export var idle_rpm : float = 1000.0
 ## Percentage of torque produced across the RPM range.
@@ -115,11 +118,11 @@ extends RigidBody3D
 ## Constant motor drag.
 @export var motor_brake : float = 10.0
 ## Moment of inertia for the motor.
-@export var motor_moment : float = 0.5
+@export var motor_moment : float = 0.3
 ## The motor will use this rpm when launching from a stop.
-@export var clutch_out_rpm : float = 3000.0
-## Max clutch torque as a ratio of max motor torque.
-@export var max_clutch_torque_ratio : float = 1.6
+@export var clutch_out_rpm : float = 2000.0
+## Max clutch torque as a ratio of max motor torque. SPEED AFTER GEAR SHIFT
+@export var max_clutch_torque_ratio : float = 1.2
 
 
 @export_group("Gearbox")
@@ -130,7 +133,7 @@ extends RigidBody3D
 ## Reverse gear ratio
 @export var reverse_ratio : float = 3.3
 ## Time it takes to change gears on up shifts in seconds
-@export var shift_time : float = 0.3
+@export var shift_time : float = 0.4
 ## Enables automatic gear changes
 @export var automatic_transmission : bool = true
 ## Timer to prevent the automatic gear shifts changing gears too quickly 
@@ -142,15 +145,15 @@ extends RigidBody3D
 
 @export_group("Drivetrain")
 ## Torque delivered to the front wheels vs the rear wheels.
-## Value of 1 is FWD, a value of 0 is RWD, anything in between is AWD.
-@export var front_torque_split : float = 0.0
+## Value of 1 is FWD, a value of 0 is RWD, anything in between is AWD. FWD SUCKS
+@export var front_torque_split : float = 0
 ## When enabled, the torque split will change based on wheel slip.
-@export var variable_torque_split : bool = false
+@export var variable_torque_split : bool = true
 ## Torque split to interpolate toward when there is wheel slip. Variable Torque
 ## Split must be enabled.
-@export var front_variable_split : float = 0.0
+@export var front_variable_split : float = 0.5
 ## How quickly to interpolate between torque splits in seconds.
-@export var variable_split_speed : float = 1.0
+@export var variable_split_speed : float = 1
 @export_subgroup("Front Axle", "front_")
 ## The wheels of the axle will be forced to spin the same speed if there
 ## is at least this much torque applied. Keeps vehicle from spinning one wheel.
@@ -175,29 +178,29 @@ extends RigidBody3D
 
 @export_group("Suspension")
 ## Vehicle mass in kilograms.
-@export var vehicle_mass : float = 1500.0
+@export var vehicle_mass : float = 1400.0
 ## The percentage of the vehicle mass over the front axle.
-@export var front_weight_distribution : float = 0.5
+var front_weight_distribution = Roadtrip.front_weight_distribution
 ## The center of gravity is calculated from the front weight distribution
 ## with the height centered on the wheel raycast positions. This will offset
 ## the height from that calculated position.
-@export var center_of_gravity_height_offset : float = -0.2
+@export var center_of_gravity_height_offset : float = -0.15
 ## Multiplies the calculated inertia by this value.
 ## Greater inertia values will cause more force to be
 ## required to rotate the car.
 @export var inertia_multiplier : float = 1.2
 
 @export_subgroup("Front Axle", "front_")
-## The amount of suspension travel in meters.
-@export var front_spring_length : float = 0.15
+## The amount of suspension travel in meters. (nomral is 15)
+@export var front_spring_length : float = 0.10
 ## How much the spring is compressed when the vehicle is at rest.
 ## This is used to calculate the approriate spring rate for the wheel.
-## A value of 0 would be a fully compressed spring.
-@export var front_resting_ratio : float = 0.5
+## A value of 0 would be a fully compressed spring.(normal is 0.5)
+@export var front_resting_ratio : float = 0.2
 ## Damping ratio is used to calculate the damping forces on the spring.
 ## A value of 1 would be critically damped. Passenger cars typically have a
 ## ratio around 0.3, while a race car could be as high as 0.9.
-@export var front_damping_ratio : float = 0.4
+@export var front_damping_ratio : float = 0.2
 ## Bump damping multiplier applied to the damping force calulated from the
 ## damping ratio. A typical ratio for a passenger car is 2/3 bump damping to
 ## 3/2 rebound damping. Race cars typically run 3/2 bump to 2/3 rebound.
@@ -207,12 +210,12 @@ extends RigidBody3D
 ## 3/2 rebound damping. Race cars typically run 3/2 bump to 2/3 rebound.
 @export var front_rebound_damp_multiplier : float = 1.5
 ## Antiroll bar stiffness as a ratio to spring stiffness.
-@export var front_arb_ratio : float = 0.25
+@export var front_arb_ratio : float = 0.5
 ## Wheel camber isn't simulated, but giving the raycast a slight angle helps
 ## with simulation stability. Measured in radians.
-@export var front_camber : float = 0.01745329
+@export var front_camber : float = 0.034
 ## Toe of the tires measured in radians.
-@export var front_toe : float = 0.01
+@export var front_toe : float = 0.005
 ## Multiplier for the force applied when the suspension is fully compressed.
 ## If the vehicle bounces off large bumps, reducing this will help.
 @export var front_bump_stop_multiplier : float = 1.0
@@ -223,16 +226,16 @@ extends RigidBody3D
 @export_subgroup("Rear Axle", "rear_")
 ## The amount of suspension travel in meters. Rear suspension typically has
 ## more travel than the front.
-@export var rear_spring_length : float = 0.2
+@export var rear_spring_length : float = 0.10
 ## How much the spring is compressed when the vehicle is at rest.
 ## This is used to calculate the approriate spring rate for the wheel.
 ## A value of 1 would be a fully compressed spring. With a value of 0.5 the
 ## suspension will rest at the center of it's length.
-@export var rear_resting_ratio : float = 0.5
+@export var rear_resting_ratio : float = 0.2
 ## Damping ratio is used to calculate the damping forces on the spring.
 ## A value of 1 would be critically damped. Passenger cars typically have a
 ## ratio around 0.3, while a race car could be as high as 0.9.
-@export var rear_damping_ratio : float = 0.4
+@export var rear_damping_ratio : float = 0.2
 ## Bump damping multiplier applied to the damping force calulated from the
 ## damping ratio. A typical ratio for a passenger car is 2/3 bump damping to
 ## 3/2 rebound damping. Race cars typically run 3/2 bump to 2/3 rebound.
@@ -267,11 +270,11 @@ extends RigidBody3D
 ## the responsivness of the tire.
 ## Surface detection uses node groups to identify the surface, so make sure
 ## your staticbodies and rigidbodies belong to one of these groups.
-@export var tire_stiffnesses : Dictionary[String, float] = { "Road" : 10.0, "Dirt" : 0.5, "Grass" : 0.5 }
+@export var tire_stiffnesses : Dictionary[String, float] = { "Road" : 20.0, "Dirt" : 0.5, "Grass" : 0.5 }
 ## A multiplier for the amount of force a tire can apply based on the surface.
 ## Surface detection uses node groups to identify the surface, so make sure
 ## your staticbodies and rigidbodies belong to one of these groups.
-@export var coefficient_of_friction : Dictionary[String, float] = { "Road" : 3.0, "Dirt" : 2.4, "Grass" : 2.0 }
+@export var coefficient_of_friction : Dictionary[String, float] = { "Road" : 2.0, "Dirt" : 2.4, "Grass" : 2.0 }
 ## A multiplier for the amount of rolling resistance force based on the surface.
 ## Surface detection uses node groups to identify the surface, so make sure
 ## your staticbodies and rigidbodies belong to one of these groups.
@@ -297,10 +300,10 @@ extends RigidBody3D
 @export var front_wheel_mass : float = 15.0
 @export_subgroup("Rear Axle", "rear_")
 ## Tire radius in meters
-@export var rear_tire_radius : float = 0.3
+@export var rear_tire_radius : float = 0.38
 ## Tire width in millimeters. The width doesn't directly affect tire friction,
 ## but reduces the effects of tire load sensitivity.
-@export var rear_tire_width : float = 245.0
+@export var rear_tire_width : float = 275.0
 ## Wheel mass in kilograms.
 @export var rear_wheel_mass : float = 15.0
 

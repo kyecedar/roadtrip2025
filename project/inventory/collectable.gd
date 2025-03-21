@@ -15,4 +15,4 @@ func pickup_item(item_name):
 		"texture": item_texture,
 		"scene_path": scene_path
 	}
-	Global.add_item(item)
+	Roadtrip.add_item(item)
