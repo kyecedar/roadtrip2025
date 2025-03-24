@@ -180,7 +180,11 @@ var max_rpm = Roadtrip.max_rpm
 ## Vehicle mass in kilograms.
 @export var vehicle_mass : float = 1400.0
 ## The percentage of the vehicle mass over the front axle.
-var front_weight_distribution = Roadtrip.front_weight_distribution
+@export var front_weight_distribution : float :
+	set(value):
+		pass # Roadtrip.front_weight_distribution
+	get():
+		return Roadtrip.front_weight_distribution
 ## The center of gravity is calculated from the front weight distribution
 ## with the height centered on the wheel raycast positions. This will offset
 ## the height from that calculated position.

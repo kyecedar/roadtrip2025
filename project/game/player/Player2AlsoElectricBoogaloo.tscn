@@ -434,6 +434,7 @@ rear_right_wheel = NodePath("WheelRearRight")
 torque_curve = SubResource("Curve_bt7kc")
 shift_time = 0.1
 automatic_time_between_shifts = 500.0
+gear_inertia = 0.04
 front_spring_length = 0.15
 front_resting_ratio = 0.6
 front_damping_ratio = 0.8
