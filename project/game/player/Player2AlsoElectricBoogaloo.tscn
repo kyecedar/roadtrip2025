@@ -399,7 +399,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("follow_this")]
-transform = Transform3D(1, 0, 0, 0, 0.989776, 0.142629, 0, -0.142629, 0.989776, 0.0528202, 2.58316, 1.80061)
+transform = Transform3D(1, 0, 0, 0, 0.989776, 0.142629, 0, -0.142629, 0.989776, 0.0528202, 2.58316, 3.51405)
 script = ExtResource("3_mruoi")
 follow_distance = 3.0
 follow_height = 1.0
