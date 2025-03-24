@@ -23,7 +23,7 @@ target = NodePath("Player/VehicleRigidBody")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.0406, 4.07522, -3.15815)
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("4_obl4g")]
-transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 116, 0, 45)
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 25.479, 0, -26.1876)
 
 [node name="VehicleRigidBody" parent="Player" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.44358, 0)
@@ -36,11 +36,11 @@ transform = Transform3D(0.984923, 0, -0.172995, 0, 1, 0, 0.172995, 0, 0.984923, 
 shape = SubResource("BoxShape3D_dxckh")
 debug_color = Color(0.714267, 0.122385, 0.500709, 1)
 
-[node name="enemy" parent="." instance=ExtResource("6_0mokf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.904, 9.43374, -104.487)
-
 [node name="enemy2" parent="." instance=ExtResource("6_0mokf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21681, 2.89247, -66.1533)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21681, 2.89247, -21.8603)
+
+[node name="enemy3" parent="." instance=ExtResource("6_0mokf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.44866, 2.89247, -21.8603)
 
 [node name="floor" type="StaticBody3D" parent="." groups=["Road"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.979874, 0)
