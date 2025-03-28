@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://b833lanm64rsx"]
+[gd_scene load_steps=12 format=3 uid="uid://b833lanm64rsx"]
 
 [ext_resource type="Script" uid="uid://d1m8o1ulnw2hj" path="res://game/main.gd" id="1_obl4g"]
+[ext_resource type="PackedScene" uid="uid://sxsfe23uyjjx" path="res://spawner_control.tscn" id="2_3jeaq"]
 [ext_resource type="PackedScene" uid="uid://mp41sy241txf" path="res://game/prototype/prototype_basics.tscn" id="2_f1mn5"]
+[ext_resource type="PackedScene" uid="uid://bi0ofoexrcalf" path="res://spawning_node.tscn" id="3_xfwjx"]
 [ext_resource type="PackedScene" uid="uid://di7d6r6jmgovb" path="res://dice.tscn" id="4_3jeaq"]
 [ext_resource type="PackedScene" uid="uid://b2nt6mkor6g2o" path="res://game/player/Player2AlsoElectricBoogaloo.tscn" id="4_obl4g"]
+[ext_resource type="PackedScene" uid="uid://dnllfh4ak61fa" path="res://gas.tscn" id="5_f1mn5"]
 [ext_resource type="Script" uid="uid://cw3tyuarw5c57" path="res://game/level_transition.gd" id="5_xfwjx"]
 [ext_resource type="PackedScene" uid="uid://bi8cqbql3n1qa" path="res://enemy/enemy.tscn" id="6_0mokf"]
 
@@ -17,13 +20,33 @@ size = Vector3(442.59, 1, 438.036)
 script = ExtResource("1_obl4g")
 target = NodePath("Player/VehicleRigidBody")
 
+[node name="spawner_control" parent="." instance=ExtResource("2_3jeaq")]
+
+[node name="spawning_node" parent="spawner_control" instance=ExtResource("3_xfwjx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.56, 1, 0)
+
+[node name="spawning_node2" parent="spawner_control" instance=ExtResource("3_xfwjx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.428, 1, -16.798)
+
+[node name="spawning_node3" parent="spawner_control" instance=ExtResource("3_xfwjx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -75.917)
+
+[node name="spawning_node4" parent="spawner_control" instance=ExtResource("3_xfwjx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.138, 1, 0)
+
+[node name="gas" parent="spawner_control" instance=ExtResource("5_f1mn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+
+[node name="resource" parent="spawner_control" instance=ExtResource("4_3jeaq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.71, 0)
+
 [node name="prototype_basics" parent="." instance=ExtResource("2_f1mn5")]
 
-[node name="dice2" parent="." instance=ExtResource("4_3jeaq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.0406, 4.07522, -3.15815)
-
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("4_obl4g")]
-transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 25.479, 0, -26.1876)
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 62.8287, 0, 0)
+
+[node name="Label" type="Label" parent="Player/GUI/VBoxContainer" index="3"]
+layout_mode = 2
 
 [node name="VehicleRigidBody" parent="Player" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.44358, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://b2nt6mkor6g2o"]
+[gd_scene load_steps=30 format=4 uid="uid://b2nt6mkor6g2o"]
 
 [ext_resource type="Script" uid="uid://hbod5mswiumb" path="res://game/prototype/vehicle_controller.gd" id="1_perc0"]
 [ext_resource type="Script" uid="uid://dc0bwl33vwoyw" path="res://addons/gevp/scripts/gui.gd" id="2_gi1qm"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://ce81i3w3r46a" path="res://addons/gevp/scripts/wheel.gd" id="7_jtvf4"]
 [ext_resource type="AudioStream" uid="uid://dio25xn4f7s6f" path="res://addons/gevp/sounds/4000.wav" id="8_0btyj"]
 [ext_resource type="Script" uid="uid://dhewpcloj0vx2" path="res://addons/gevp/scripts/engine_sound.gd" id="9_im6me"]
+[ext_resource type="PackedScene" uid="uid://crniyl4v8i7d3" path="res://smoke.tscn" id="10_jtvf4"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5m52b"]
 points = PackedVector3Array(0.649863, 0.19998, 1.14996, 0.549971, 0.399961, 1.24972, 0.620595, 0.19998, 1.22047, 0.649863, 0, 1.14996, 0.649863, 0.375734, 0.935564, -0.550108, 0.399961, 1.24972, 0.549971, 0, 1.24972, 0.649863, 0.437666, 0.854985, 0.549971, 0.499951, 1.04996, 0.449953, 0.9, 0.549939, 0.620595, 0, 1.22047, 0.649863, 0, -1.10024, -0.550108, 0.499951, 1.04996, -0.65, 0.437666, 0.854985, -0.65, 0.375734, 0.935564, -0.65, 0.19998, 1.14996, -0.620732, 0.19998, 1.22047, -0.550108, 0, 1.24972, -0.45009, 0.9, 0.549939, 0.649863, 0.476693, 0.760738, 0.549971, 0.599941, 0.849949, 0.649863, 0.489996, 0.659775, 0.649863, 0.599941, -0.322992, 0.449953, 0.9, -0.150084, 0.620595, 0, -1.17074, 0.649863, 0.19998, -1.10024, -0.550108, 0.599941, 0.849949, -0.65, 0.476693, 0.760738, -0.65, 0, 1.14996, -0.620732, 0, 1.22047, -0.45009, 0.9, -0.150084, -0.65, 0.599941, -0.322992, -0.65, 0.489996, 0.659775, 0.649863, 0.599941, -0.422995, 0.549971, 0.54999, -0.90023, 0.549971, 0, -1.2, 0.620595, 0.19998, -1.17074, 0.649863, 0.375734, -0.935962, -0.65, 0, -1.10024, -0.550108, 0.54999, -0.90023, -0.65, 0.599941, -0.422995, 0.649863, 0.476693, -0.761136, 0.649863, 0.437666, -0.855144, 0.549971, 0.399961, -1.15012, 0.549971, 0.19998, -1.2, -0.550108, 0, -1.2, -0.65, 0.19998, -1.10024, -0.620732, 0, -1.17074, -0.550108, 0.399961, -1.15012, -0.65, 0.437666, -0.855144, -0.65, 0.476693, -0.761136, -0.550108, 0.19998, -1.2, -0.65, 0.375734, -0.935962, -0.620732, 0.19998, -1.17074)
@@ -398,6 +399,9 @@ layout_mode = 2
 [node name="Gear" type="Label" parent="GUI/VBoxContainer"]
 layout_mode = 2
 
+[node name="Countdown" type="Label" parent="GUI/VBoxContainer"]
+layout_mode = 2
+
 [node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("follow_this")]
 transform = Transform3D(1, 0, 0, 0, 0.989776, 0.142629, 0, -0.142629, 0.989776, 0.0528202, 2.58316, 3.51405)
 script = ExtResource("3_mruoi")
@@ -453,6 +457,8 @@ front_tire_radius = 0.38
 coefficient_of_drag = 0.35
 frontal_area = 2.19
 
+[node name="Smoke" parent="VehicleRigidBody" instance=ExtResource("10_jtvf4")]
+
 [node name="CollisionFront" type="CollisionShape3D" parent="VehicleRigidBody"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.5, -0.9)
 shape = SubResource("CapsuleShape3D_mruoi")
@@ -490,6 +496,7 @@ script = ExtResource("7_jtvf4")
 wheel_node = NodePath("FrontLeftWheel")
 
 [node name="FrontLeftWheel" type="Node3D" parent="VehicleRigidBody/WheelFrontLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0458962, 0, 0)
 
 [node name="wheel_frontLeft" type="MeshInstance3D" parent="VehicleRigidBody/WheelFrontLeft/FrontLeftWheel"]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0)
@@ -541,3 +548,11 @@ vehicle = NodePath("..")
 
 [node name="CameraFocal" type="Node3D" parent="VehicleRigidBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="countdown_timer" type="Timer" parent="VehicleRigidBody"]
+process_callback = 0
+wait_time = 1.5
+autostart = true
+
+[connection signal="timeout" from="VehicleRigidBody/countdown_timer" to="VehicleRigidBody" method="_on_countdown_timer_timeout"]
+[connection signal="timeout" from="VehicleRigidBody/countdown_timer" to="VehicleRigidBody" method="_on_timer_timeout"]

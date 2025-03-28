@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://crniyl4v8i7d3"]
+
+[ext_resource type="Script" uid="uid://dtdra88xxjf1d" path="res://game/player/smoke.gd" id="1_niign"]
+
+[sub_resource type="Gradient" id="Gradient_ca0x4"]
+offsets = PackedFloat32Array(0.527197, 0.711297, 0.757322, 1)
+colors = PackedColorArray(0.556863, 0.556863, 0.556863, 0.972549, 0.733333, 0.733333, 0.733333, 0.980392, 0.760784, 0.760784, 0.760784, 0.960784, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_im6me"]
+gradient = SubResource("Gradient_ca0x4")
+
+[sub_resource type="Curve" id="Curve_o88gx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dwe1g"]
+curve = SubResource("Curve_o88gx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sl1eh"]
+lifetime_randomness = 0.3
+direction = Vector3(0, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0.1, 0)
+damping_min = 0.5
+damping_max = 0.5
+attractor_interaction_enabled = false
+scale_min = 0.1
+scale_max = 0.8
+scale_curve = SubResource("CurveTexture_dwe1g")
+color_ramp = SubResource("GradientTexture1D_im6me")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jf1vy"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.705882)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ofkd8"]
+material = SubResource("StandardMaterial3D_jf1vy")
+radial_segments = 8
+rings = 4
+
+[node name="Smoke" type="GPUParticles3D"]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_sl1eh")
+draw_pass_1 = SubResource("SphereMesh_ofkd8")
+script = ExtResource("1_niign")
