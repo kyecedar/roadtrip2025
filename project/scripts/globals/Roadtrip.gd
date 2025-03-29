@@ -31,6 +31,7 @@ var max_rpm: float = 3000
 var front_weight_distribution: float = 0.53
 
 
+## @depricated: For old car controller, use above variables insted.
 var PLAYER_MAX_STEER        : float = 40.0 ## Degrees.
 var PLAYER_WHEEL_TURN_SPEED : float =  0.8 ## 2.5 is really good handling, 1.5 is okay handling, 0.5 is shit handling.
 
