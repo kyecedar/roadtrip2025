@@ -52,6 +52,11 @@ var PLAYER_CAMERA_BACKWARD_MIN : float = -6.0
 
 var PLAYER_CAMERA_MAX_ROLL_ROTATION : float = 30.0 ## In degrees.
 var PLAYER_MAX_SPEED : float = 80.0 ## Miles the per hour per eagle per fooball field per AR-15 magazines.
+#countdown
+var countdown: int = 30
+func _process(delta: float) -> void:
+	if countdown < 0:
+		get_tree().change_scene_to_file("res://GAMEOVER.tscn")
 #endregion player.
 
 

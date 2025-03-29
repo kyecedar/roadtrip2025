@@ -398,6 +398,8 @@ var delta_time : float = 0.0
 var vehicle_inertia : Vector3
 var current_gravity : Vector3
 
+
+
 class Axle:
 	var wheels : Array[Wheel] = []
 	var is_drive_axle : bool = false
@@ -610,11 +612,9 @@ func initialize():
 	calculate_brake_force()
 	
 	is_ready = true
-
 func _physics_process(delta : float) -> void:
 	if not is_ready:
 		return
-	
 	## For stability calculations, we need the vehicle body inertia which isn't
 	## available immediately
 	if not vehicle_inertia:
@@ -1083,3 +1083,7 @@ func calculate_damping(weight : float, spring_rate : float, damping_ratio : floa
 
 func calculate_axle_spring_force(compression : float, spring_length : float, spring_rate : float) -> float:
 	return spring_length * compression * 1000.0 * spring_rate * 2.0
+
+#countdown
+func _on_countdown_timer_timeout() -> void:
+	Roadtrip.countdown -= 1
