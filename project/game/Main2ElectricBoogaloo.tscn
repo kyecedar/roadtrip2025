@@ -13,6 +13,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_dxckh"]
 size = Vector3(65.7623, 15.3667, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_obl4g"]
+size = Vector3(442.59, 1, 438.036)
+
 [node name="Main" type="Node3D" node_paths=PackedStringArray("target")]
 script = ExtResource("1_obl4g")
 target = NodePath("Player/VehicleRigidBody")
@@ -61,6 +64,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21681, 2.89247, -21.8603)
 
 [node name="enemy3" parent="." instance=ExtResource("6_0mokf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.44866, 2.89247, -21.8603)
+
+[node name="floor" type="StaticBody3D" parent="." groups=["Road"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.979874, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.635, 0.679753, -20.7103)
+shape = SubResource("BoxShape3D_obl4g")
 
 [connection signal="body_entered" from="level transition" to="level transition" method="_on_body_entered"]
 

@@ -61,7 +61,7 @@ environment = SubResource("Environment_plshj")
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="env"]
 navigation_mesh = SubResource("NavigationMesh_0jgk6")
 
-[node name="Floor" type="StaticBody3D" parent="env/NavigationRegion3D" groups=["SurfaceRoad"]]
+[node name="Floor" type="StaticBody3D" parent="env/NavigationRegion3D"]
 
 [node name="Collision" type="CollisionShape3D" parent="env/NavigationRegion3D/Floor"]
 shape = SubResource("WorldBoundaryShape3D_a1jly")
