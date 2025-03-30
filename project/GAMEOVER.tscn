@@ -25,6 +25,7 @@ offset_left = 40.0
 offset_top = 192.0
 offset_right = 835.0
 offset_bottom = 317.0
+button_mask = 7
 text = "RETRY"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -29,7 +29,7 @@ extends RigidBody3D
 ## Further steering input is prevented if the wheels' lateral slip is greater than this number.
 @export var steering_slip_assist : float = 0.5
 ## The magnitude to adjust steering toward the direction of travel based on the vehicle's lateral velocity.
-@export var countersteer_assist : float = 0.75
+@export var countersteer_assist : float = 0.25
 ## Steering input is raised to the power of this number.
 ## This has the effect of slowing steering input near the limits.
 @export var steering_exponent : float = 4
@@ -69,23 +69,9 @@ extends RigidBody3D
 @export var traction_control_max_slip : float = 8.0
 #idk what this does 8 is normal
 
-@export_subgroup("Front Axle", "front_")
-## How long the ABS releases the brake, in seconds, when the
-## spin threshold is crossed.
-@export var front_abs_pulse_time : float = 0
-## The difference in speed required between the wheel and the
-## driving surface for ABS to engage.
-## fuck abs (normal is 12)
-@export var front_abs_spin_difference_threshold : float = 10000
 
-@export_subgroup("Rear Axle", "rear_")
-## How long the ABS releases the brake, in seconds, when the
-## spin threshold is crossed.
-@export var rear_abs_pulse_time : float = 0
-## The difference in speed required between the wheel and the
-## driving surface for ABS to engage.
-## fuck abs (normal is 12)
-@export var rear_abs_spin_difference_threshold : float = 1000
+
+
 
 @export_group("Stability")
 ## Stablity applies torque forces to the vehicle body when the body angle
@@ -180,7 +166,11 @@ var max_rpm = Roadtrip.max_rpm
 ## Vehicle mass in kilograms.
 @export var vehicle_mass : float = 1400.0
 ## The percentage of the vehicle mass over the front axle.
-var front_weight_distribution = Roadtrip.front_weight_distribution
+@export var front_weight_distribution : float :
+	set(value):
+		pass # Roadtrip.front_weight_distribution
+	get():
+		return Roadtrip.front_weight_distribution
 ## The center of gravity is calculated from the front weight distribution
 ## with the height centered on the wheel raycast positions. This will offset
 ## the height from that calculated position.
@@ -192,23 +182,23 @@ var front_weight_distribution = Roadtrip.front_weight_distribution
 
 @export_subgroup("Front Axle", "front_")
 ## The amount of suspension travel in meters. (nomral is 15)
-@export var front_spring_length : float = 0.10
+var front_spring_length = Roadtrip.front_spring_length
 ## How much the spring is compressed when the vehicle is at rest.
 ## This is used to calculate the approriate spring rate for the wheel.
 ## A value of 0 would be a fully compressed spring.(normal is 0.5)
-@export var front_resting_ratio : float = 0.2
+var front_resting_ratio = Roadtrip.front_resting_ratio
 ## Damping ratio is used to calculate the damping forces on the spring.
 ## A value of 1 would be critically damped. Passenger cars typically have a
 ## ratio around 0.3, while a race car could be as high as 0.9.
-@export var front_damping_ratio : float = 0.2
+var front_damping_ratio = Roadtrip.front_damping_ratio
 ## Bump damping multiplier applied to the damping force calulated from the
 ## damping ratio. A typical ratio for a passenger car is 2/3 bump damping to
 ## 3/2 rebound damping. Race cars typically run 3/2 bump to 2/3 rebound.
-@export var front_bump_damp_multiplier : float = 0.6667
+var front_bump_damp_multiplier = Roadtrip.front_bump_damp_multiplier
 ## Rebound damping multiplier applied to the damping force calulated from the
 ## damping ratio. A typical ratio for a passenger car is 2/3 bump damping to
 ## 3/2 rebound damping. Race cars typically run 3/2 bump to 2/3 rebound.
-@export var front_rebound_damp_multiplier : float = 1.5
+var front_rebound_damp_multiplier : float = 1.5
 ## Antiroll bar stiffness as a ratio to spring stiffness.
 @export var front_arb_ratio : float = 0.5
 ## Wheel camber isn't simulated, but giving the raycast a slight angle helps
@@ -226,20 +216,20 @@ var front_weight_distribution = Roadtrip.front_weight_distribution
 @export_subgroup("Rear Axle", "rear_")
 ## The amount of suspension travel in meters. Rear suspension typically has
 ## more travel than the front.
-@export var rear_spring_length : float = 0.10
+var rear_spring_length = Roadtrip.rear_spring_length
 ## How much the spring is compressed when the vehicle is at rest.
 ## This is used to calculate the approriate spring rate for the wheel.
 ## A value of 1 would be a fully compressed spring. With a value of 0.5 the
 ## suspension will rest at the center of it's length.
-@export var rear_resting_ratio : float = 0.2
+var rear_resting_ratio = Roadtrip.rear_resting_ratio
 ## Damping ratio is used to calculate the damping forces on the spring.
 ## A value of 1 would be critically damped. Passenger cars typically have a
 ## ratio around 0.3, while a race car could be as high as 0.9.
-@export var rear_damping_ratio : float = 0.2
+var rear_damping_ratio = Roadtrip.rear_damping_ratio
 ## Bump damping multiplier applied to the damping force calulated from the
 ## damping ratio. A typical ratio for a passenger car is 2/3 bump damping to
 ## 3/2 rebound damping. Race cars typically run 3/2 bump to 2/3 rebound.
-@export var rear_bump_damp_multiplier : float = 0.6667
+var rear_bump_damp_multiplier = Roadtrip.rear_bump_damp_multiplier
 ## Rebound damping multiplier applied to the damping force calulated from the
 ## damping ratio. A typical ratio for a passenger car is 2/3 bump damping to
 ## 3/2 rebound damping. Race cars typically run 3/2 bump to 2/3 rebound.
@@ -527,8 +517,7 @@ func initialize():
 		wheel.fast_rebound = front_damping_rate * front_rebound_damp_multiplier * 0.5
 		wheel.bump_stop_multiplier = front_bump_stop_multiplier
 		wheel.mass_over_wheel = vehicle_mass * front_weight_distribution * 0.5
-		wheel.abs_pulse_time = front_abs_pulse_time
-		wheel.abs_spin_difference_threshold = -absf(front_abs_spin_difference_threshold)
+
 	
 	var rear_weight_per_wheel : float = vehicle_mass * (1.0 - front_weight_distribution) * 4.9
 	var rear_spring_rate : float = calculate_spring_rate(rear_weight_per_wheel, rear_spring_length, rear_resting_ratio)
@@ -548,8 +537,6 @@ func initialize():
 		wheel.fast_rebound = rear_damping_rate * rear_rebound_damp_multiplier * 0.5
 		wheel.bump_stop_multiplier = rear_bump_stop_multiplier
 		wheel.mass_over_wheel = vehicle_mass * (1.0 - front_weight_distribution) * 0.5
-		wheel.abs_pulse_time = rear_abs_pulse_time
-		wheel.abs_spin_difference_threshold = -absf(rear_abs_spin_difference_threshold)
 	
 	var wheel_base : float = rear_left_wheel.position.z - front_left_wheel.position.z
 	var front_track_width : float = front_right_wheel.position.x - front_left_wheel.position.x

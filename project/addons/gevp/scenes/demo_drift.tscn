@@ -17,10 +17,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09154, 0)
 vehicle_node = NodePath("VehicleRigidBody")
 
 [node name="VehicleRigidBody" parent="VehicleController" instance=ExtResource("2_aswcu")]
+front_weight_distribution = 0.0
 front_camber = 0.136
 rear_camber = 0.136
 
 [node name="EngineSound" parent="VehicleController/VehicleRigidBody" node_paths=PackedStringArray("vehicle") instance=ExtResource("3_av0fk")]
+volume_db = -80.0
+max_db = -24.0
 vehicle = NodePath("..")
 
 [node name="Smoke" parent="VehicleController/VehicleRigidBody" node_paths=PackedStringArray("vehicle") instance=ExtResource("4_6x1xv")]
