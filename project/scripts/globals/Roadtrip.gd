@@ -29,7 +29,6 @@ signal inventory_updated
 var max_torque: float = 200
 var max_rpm: float = 3000
 var front_weight_distribution: float = 0.53
-<<<<<<< HEAD
 var front_spring_length : float = 0.10
 ## How much the spring is compressed when the vehicle is at rest.
 ## This is used to calculate the approriate spring rate for the wheel.
@@ -69,11 +68,6 @@ var rear_bump_damp_multiplier : float = 0.6667
 ## 3/2 rebound damping. Race cars typically run 3/2 bump to 2/3 rebound.
 var rear_rebound_damp_multiplier : float = 1.5
 #OLD CODE I THINK BELOW
-=======
-
-
-## @depricated: For old car controller, use above variables insted.
->>>>>>> e4b410900914b4ce3a1441163abd3d8bf7de4914
 var PLAYER_MAX_STEER        : float = 40.0 ## Degrees.
 var PLAYER_WHEEL_TURN_SPEED : float =  0.8 ## 2.5 is really good handling, 1.5 is okay handling, 0.5 is shit handling.
 

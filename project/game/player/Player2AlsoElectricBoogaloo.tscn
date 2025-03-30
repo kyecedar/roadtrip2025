@@ -438,13 +438,6 @@ rear_right_wheel = NodePath("WheelRearRight")
 torque_curve = SubResource("Curve_bt7kc")
 shift_time = 0.1
 automatic_time_between_shifts = 500.0
-<<<<<<< HEAD
-=======
-gear_inertia = 0.04
-front_spring_length = 0.15
-front_resting_ratio = 0.6
-front_damping_ratio = 0.8
->>>>>>> e4b410900914b4ce3a1441163abd3d8bf7de4914
 front_camber = 0.136
 rear_arb_ratio = 0.5
 rear_camber = 0.136
@@ -555,5 +548,5 @@ process_callback = 0
 wait_time = 1.5
 autostart = true
 
-[connection signal="timeout" from="VehicleRigidBody/countdown_timer" to="VehicleRigidBody" method="_on_countdown_timer_timeout"]
 [connection signal="timeout" from="VehicleRigidBody/countdown_timer" to="VehicleRigidBody" method="_on_timer_timeout"]
+[connection signal="timeout" from="VehicleRigidBody/countdown_timer" to="VehicleRigidBody" method="_on_countdown_timer_timeout"]
