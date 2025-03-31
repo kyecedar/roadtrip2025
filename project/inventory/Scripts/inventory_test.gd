@@ -77,7 +77,7 @@ func _on_suspension_pressed() -> void:
 ## Damping ratio is used to calculate the damping forces on the spring.
 ## A value of 1 would be critically damped. Passenger cars typically have a
 ## ratio around 0.3, while a race car could be as high as 0.9.
-		Roadtrip.front_damping_ratio = 0.8
+		Roadtrip.front_damping_ratio = 0.7
 ## Bump damping multiplier applied to the damping force calulated from the
 ## damping ratio. A typical ratio for a passenger car is 2/3 bump damping to
 ## 3/2 rebound damping. Race cars typically run 3/2 bump to 2/3 rebound.
@@ -89,7 +89,7 @@ func _on_suspension_pressed() -> void:
 
 ## The amount of suspension travel in meters. Rear suspension typically has
 ## more travel than the front.
-		Roadtrip.rear_spring_length = 0.23
+		Roadtrip.rear_spring_length = 0.22
 ## How much the spring is compressed when the vehicle is at rest.
 ## This is used to calculate the approriate spring rate for the wheel.
 ## A value of 1 would be a fully compressed spring. With a value of 0.5 the
@@ -98,7 +98,7 @@ func _on_suspension_pressed() -> void:
 ## Damping ratio is used to calculate the damping forces on the spring.
 ## A value of 1 would be critically damped. Passenger cars typically have a
 ## ratio around 0.3, while a race car could be as high as 0.9.
-		Roadtrip.rear_damping_ratio = 0.8
+		Roadtrip.rear_damping_ratio = 0.7
 ## Bump damping multiplier applied to the damping force calulated from the
 ## damping ratio. A typical ratio for a passenger car is 2/3 bump damping to
 ## 3/2 rebound damping. Race cars typically run 3/2 bump to 2/3 rebound.
