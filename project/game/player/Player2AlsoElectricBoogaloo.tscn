@@ -402,6 +402,9 @@ layout_mode = 2
 [node name="Countdown" type="Label" parent="GUI/VBoxContainer"]
 layout_mode = 2
 
+[node name="unstuck" type="Label" parent="GUI/VBoxContainer"]
+layout_mode = 2
+
 [node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("follow_this")]
 transform = Transform3D(1, 0, 0, 0, 0.989776, 0.142629, 0, -0.142629, 0.989776, 0.0528202, 2.58316, 3.51405)
 script = ExtResource("3_mruoi")
@@ -548,5 +551,9 @@ process_callback = 0
 wait_time = 1.5
 autostart = true
 
+[node name="unstuck_timer" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="timeout" from="VehicleRigidBody/countdown_timer" to="VehicleRigidBody" method="_on_timer_timeout"]
 [connection signal="timeout" from="VehicleRigidBody/countdown_timer" to="VehicleRigidBody" method="_on_countdown_timer_timeout"]
+[connection signal="timeout" from="unstuck_timer" to="GUI" method="_on_unstuck_timer_timeout"]

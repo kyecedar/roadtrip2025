@@ -48,7 +48,7 @@ func _on_upgrade_pressed() -> void:
 	else:
 		upgrade_text.text = "cool it worked enjoy
 		 your bombaclat"
-		Roadtrip.front_weight_distribution = 0.65
+		Roadtrip.front_weight_distribution = 0.55
 		Roadtrip.max_torque = 2000
 		Roadtrip.max_rpm = 3000
 		Roadtrip.remove_item("apple", 3)
@@ -69,11 +69,11 @@ func _on_suspension_pressed() -> void:
 
 		Roadtrip.remove_item("apple", 3)
 		Roadtrip.remove_item("sticks", 5)
-		Roadtrip.front_spring_length = 0.15
+		Roadtrip.front_spring_length = 0.2
 ## How much the spring is compressed when the vehicle is at rest.
 ## This is used to calculate the approriate spring rate for the wheel.
 ## A value of 0 would be a fully compressed spring.(normal is 0.5)
-		Roadtrip.front_resting_ratio = 0.5
+		Roadtrip.front_resting_ratio = 0.8
 ## Damping ratio is used to calculate the damping forces on the spring.
 ## A value of 1 would be critically damped. Passenger cars typically have a
 ## ratio around 0.3, while a race car could be as high as 0.9.
@@ -89,12 +89,12 @@ func _on_suspension_pressed() -> void:
 
 ## The amount of suspension travel in meters. Rear suspension typically has
 ## more travel than the front.
-		Roadtrip.rear_spring_length = 0.2
+		Roadtrip.rear_spring_length = 0.23
 ## How much the spring is compressed when the vehicle is at rest.
 ## This is used to calculate the approriate spring rate for the wheel.
 ## A value of 1 would be a fully compressed spring. With a value of 0.5 the
 ## suspension will rest at the center of it's length.
-		Roadtrip.rear_resting_ratio = 0.5
+		Roadtrip.rear_resting_ratio = 0.8
 ## Damping ratio is used to calculate the damping forces on the spring.
 ## A value of 1 would be critically damped. Passenger cars typically have a
 ## ratio around 0.3, while a race car could be as high as 0.9.

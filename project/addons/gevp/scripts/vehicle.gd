@@ -117,7 +117,7 @@ var max_rpm = Roadtrip.max_rpm
 ## Final drive ratio
 @export var final_drive : float = 3.2
 ## Reverse gear ratio
-@export var reverse_ratio : float = 3.3
+@export var reverse_ratio : float = 5
 ## Time it takes to change gears on up shifts in seconds
 @export var shift_time : float = 0.4
 ## Enables automatic gear changes
@@ -132,7 +132,7 @@ var max_rpm = Roadtrip.max_rpm
 @export_group("Drivetrain")
 ## Torque delivered to the front wheels vs the rear wheels.
 ## Value of 1 is FWD, a value of 0 is RWD, anything in between is AWD. FWD SUCKS
-@export var front_torque_split : float = 0
+@export var front_torque_split : float = 0.5
 ## When enabled, the torque split will change based on wheel slip.
 @export var variable_torque_split : bool = true
 ## Torque split to interpolate toward when there is wheel slip. Variable Torque
@@ -725,7 +725,6 @@ func process_throttle(delta : float) -> void:
 		clutch_amount = 1.0
 	else:
 		clutch_amount = clutch_input
-
 func process_motor(delta : float) -> void:
 	var drag_torque : float = motor_rpm * motor_drag
 	torque_output = get_torque_at_rpm(motor_rpm) * throttle_amount

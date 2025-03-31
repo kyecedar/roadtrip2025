@@ -43,7 +43,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.71, 0)
 [node name="prototype_basics" parent="." instance=ExtResource("2_f1mn5")]
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("4_obl4g")]
-transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 62.8287, 0, 0)
+transform = Transform3D(0.5, 0, 0.866025, 0.214771, -0.968761, -0.123998, 0.838971, 0.247997, -0.48438, 62.8287, 0, 0)
 
 [node name="Label" type="Label" parent="Player/GUI/VBoxContainer" index="3"]
 layout_mode = 2
