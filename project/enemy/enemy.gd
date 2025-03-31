@@ -10,7 +10,7 @@ var state: States = States.IDLE
 @onready var e_collide : Timer = $enemy_collision
 @onready var p_collide : Timer = $player_collision
 @onready var front : Node3D = $front
-@onready var raycast : RayCast3D = $RayCast3D
+#@onready var raycast : RayCast3D = $RayCast3D
 @onready var nav : NavigationAgent3D = $NavigationAgent3D
 @onready var animation_player = $AnimationPlayer
 @onready var spotted_finished = false
@@ -42,7 +42,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 	if state == States.COOLDOWN:
 		update_target_location(Roadtrip.enemy_target_position)
-		var z_dot : float = velocity.dot(transform.basis.z)
+		var _z_dot : float = velocity.dot(transform.basis.z)
 		var current_location : Vector3 = global_transform.origin
 		var next_location : Vector3 = nav.get_next_path_position()
 		var new_velocity : Vector3 = (next_location-current_location).normalized() * speed
@@ -70,8 +70,8 @@ func _on_player_collision_timeout() -> void:
 	speed = 8
 	state = States.CHASE
 	
-func set_state(new_state: int) -> void:
-	var previous_state := state
+func set_state(new_state: States) -> void:
+	var previous_state : States = state
 	state = new_state
 
 	# You can check both the previous and the new state to determine what to do when the state changes. This checks the previous state.
@@ -87,5 +87,5 @@ func _on_detection_body_entered(body: Node3D) -> void:
 		state = States.CHASE
 
 
-func _on_animation_player_animation_finished(spotted_player) -> void:
+func _on_animation_player_animation_finished(_spotted_player) -> void:
 	spotted_finished = true

@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://7stfe2883wif"]
 
-[ext_resource type="PackedScene" uid="uid://b2nt6mkor6g2o" path="res://game/player/Player2AlsoElectricBoogaloo.tscn" id="1_b6s7v"]
+[ext_resource type="PackedScene" uid="uid://b2nt6mkor6g2o" path="res://game/player/Player.tscn" id="1_b6s7v"]
 [ext_resource type="Texture2D" uid="uid://lb5j3k1v0n6w" path="res://assets/prototype/kenney/PNG/Dark/texture_04.png" id="4_b6s7v"]
 [ext_resource type="Texture2D" uid="uid://cyt78kvqmlfrw" path="res://assets/prototype/kenney/PNG/Orange/texture_09.png" id="10_h1num"]
 [ext_resource type="Texture2D" uid="uid://d35dr17p4pleq" path="res://assets/prototype/kenney/PNG/Purple/texture_10.png" id="11_3pfhn"]
@@ -105,35 +105,35 @@ use_collision = true
 size = Vector3(16, 40, 16)
 material = SubResource("StandardMaterial3D_3pfhn")
 
-[node name="Ramp1" type="CSGPolygon3D" parent="."]
+[node name="Ramp1" type="CSGPolygon3D" parent="." groups=["SurfaceRoad"]]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -48)
 use_collision = true
 polygon = PackedVector2Array(0, 0, 0, 2, 5, 0)
 depth = 8.0
 material = SubResource("StandardMaterial3D_pdpcp")
 
-[node name="Ramp4" type="CSGPolygon3D" parent="."]
+[node name="Ramp4" type="CSGPolygon3D" parent="." groups=["SurfaceRoad"]]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.57897e-06, 0, -107)
 use_collision = true
 polygon = PackedVector2Array(0, 0, 0, 2, 5, 0)
 depth = 10.0
 material = SubResource("StandardMaterial3D_pdpcp")
 
-[node name="Ramp2" type="CSGPolygon3D" parent="."]
+[node name="Ramp2" type="CSGPolygon3D" parent="." groups=["SurfaceRoad"]]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 33, 0, -90)
 use_collision = true
 polygon = PackedVector2Array(0, 0, 0, 3, 5, 0)
 depth = 10.0
 material = SubResource("StandardMaterial3D_pdpcp")
 
-[node name="Ramp5" type="CSGPolygon3D" parent="."]
+[node name="Ramp5" type="CSGPolygon3D" parent="." groups=["SurfaceRoad"]]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.86805e-07, 0, -108)
 use_collision = true
 polygon = PackedVector2Array(0, 0, 0, 3, 5, 0)
 depth = 10.0
 material = SubResource("StandardMaterial3D_pdpcp")
 
-[node name="Ramp3" type="CSGPolygon3D" parent="."]
+[node name="Ramp3" type="CSGPolygon3D" parent="." groups=["SurfaceRoad"]]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 54, 0, -105.981)
 use_collision = true
 polygon = PackedVector2Array(0, 0, 0, 5, 5, 0)

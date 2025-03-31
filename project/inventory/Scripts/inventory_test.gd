@@ -3,13 +3,15 @@ extends Control
 
 # Scene-Tree Node references
 @onready var inventory_ui = $InventoryUI
-@export var item_name = ""
 @export var item_texture: Texture
 @export var item_quantity: int
 
+## Scene that's transitioned to when escape is pressed.
+@export_file("*.tscn") var scene_when_exited : String
+
 var scene_path: String = "res://inventory/Scenes/Inventory_Item.tscn"
 
-@onready var upgrade_text = $upgrade_text
+@onready var upgrade_text : Label = $upgrade_text
 
 # Variables
 # Show inventory menu on "I" pressed
@@ -20,8 +22,9 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_inventory"):
 		inventory_ui.visible = !inventory_ui.visible
+	
 	if event.is_action_pressed("escape"):
-		get_tree().change_scene_to_file("res://game/Main2ElectricBoogaloo.tscn")
+		Roadtrip.change_scene_to(scene_when_exited)
 
 func pickup_item(item_name: String) -> void:
 	var item = {

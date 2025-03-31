@@ -75,7 +75,7 @@ shadow_mesh = SubResource("ArrayMesh_ksvtu")
 [sub_resource type="BoxShape3D" id="BoxShape3D_n67h0"]
 size = Vector3(2.34471, 2.18787, 2.13979)
 
-[node name="gas" type="Node3D"]
+[node name="gas" type="Node3D" groups=["WorldResource"]]
 script = ExtResource("1_c8tse")
 
 [node name="Cube" type="MeshInstance3D" parent="."]

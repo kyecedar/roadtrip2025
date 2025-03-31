@@ -13,6 +13,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_fpraf")
+item_quantity = null
+scene_when_exited = "uid://b833lanm64rsx"
 
 [node name="InventoryUI" type="CanvasLayer" parent="."]
 visible = false

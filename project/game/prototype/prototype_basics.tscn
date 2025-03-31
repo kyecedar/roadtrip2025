@@ -61,7 +61,7 @@ environment = SubResource("Environment_plshj")
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="env"]
 navigation_mesh = SubResource("NavigationMesh_0jgk6")
 
-[node name="Floor" type="StaticBody3D" parent="env/NavigationRegion3D"]
+[node name="Floor" type="StaticBody3D" parent="env/NavigationRegion3D" groups=["SurfaceRoad"]]
 
 [node name="Collision" type="CollisionShape3D" parent="env/NavigationRegion3D/Floor"]
 shape = SubResource("WorldBoundaryShape3D_a1jly")
@@ -153,28 +153,28 @@ transform = Transform3D(0.795167, 0, 0.606391, 0, 1, 0, -0.606391, 0, 0.795167, 
 size = Vector3(127.267, 5.85449, 1)
 material = SubResource("StandardMaterial3D_xqack")
 
-[node name="Ramp1" type="CSGPolygon3D" parent="env/NavigationRegion3D/Obstacles"]
+[node name="Ramp1" type="CSGPolygon3D" parent="env/NavigationRegion3D/Obstacles" groups=["SurfaceRoad"]]
 transform = Transform3D(0.99829, 0, 0.0584526, 0, 1, 0, -0.0584526, 0, 0.99829, -22.893, 0, -1.20533)
 use_collision = true
 polygon = PackedVector2Array(1.28818, -0.447364, 0.266031, 2.2867, 5, 0)
 depth = 3.0
 material = SubResource("StandardMaterial3D_8xwah")
 
-[node name="Ramp2" type="CSGPolygon3D" parent="env/NavigationRegion3D/Obstacles"]
+[node name="Ramp2" type="CSGPolygon3D" parent="env/NavigationRegion3D/Obstacles" groups=["SurfaceRoad"]]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -22.7, 0, -4.3996)
 use_collision = true
 polygon = PackedVector2Array(0, 0, -1.78763, 4.18729, 5, 0)
 depth = 12.0
 material = SubResource("StandardMaterial3D_8xwah")
 
-[node name="Ramp3" type="CSGPolygon3D" parent="env/NavigationRegion3D/Obstacles"]
+[node name="Ramp3" type="CSGPolygon3D" parent="env/NavigationRegion3D/Obstacles" groups=["SurfaceRoad"]]
 transform = Transform3D(1, 0, -3.49691e-07, 0, 1, 0, 3.49691e-07, 0, 1, -22.7, 0, -16.4001)
 use_collision = true
 polygon = PackedVector2Array(0, 0, 0, 1, 5, 0)
 depth = 12.0
 material = SubResource("StandardMaterial3D_8xwah")
 
-[node name="Ramp4" type="CSGPolygon3D" parent="env/NavigationRegion3D/Obstacles"]
+[node name="Ramp4" type="CSGPolygon3D" parent="env/NavigationRegion3D/Obstacles" groups=["SurfaceRoad"]]
 transform = Transform3D(-0.999686, 0, 0.0250433, 0, 1, 0, -0.0250433, 0, -0.999686, -26.0467, 0, -17.3129)
 use_collision = true
 polygon = PackedVector2Array(0, 0, -1.70095, 4.15908, 5, 0)

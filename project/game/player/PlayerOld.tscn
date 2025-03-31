@@ -1,0 +1,156 @@
+[gd_scene load_steps=10 format=3 uid="uid://8ubsklmdk8ip"]
+
+[ext_resource type="Script" uid="uid://crc78glkp1w8m" path="res://game/player/player.gd" id="1_os3da"]
+[ext_resource type="Texture2D" uid="uid://cvd307y53awru" path="res://assets/prototype/kenney/PNG/Dark/texture_09.png" id="2_r3fyy"]
+[ext_resource type="Texture2D" uid="uid://chjrdipjlegtc" path="res://assets/prototype/kenney/PNG/Red/texture_07.png" id="3_liska"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oyoa4"]
+albedo_texture = ExtResource("2_r3fyy")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jp0t1"]
+albedo_texture = ExtResource("2_r3fyy")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwxk0"]
+albedo_texture = ExtResource("2_r3fyy")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pvo3q"]
+albedo_texture = ExtResource("2_r3fyy")
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2lptk"]
+size = Vector3(1.9573, 1.2, 4.47285)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dbo52"]
+albedo_texture = ExtResource("3_liska")
+uv1_triplanar = true
+
+[node name="Player" type="VehicleBody3D" groups=["player"]]
+mass = 1000.0
+gravity_scale = 2.0
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.2, 0)
+script = ExtResource("1_os3da")
+
+[node name="FrontLeft" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.35, 1.6)
+use_as_steering = true
+wheel_roll_influence = 0.01
+wheel_radius = 0.35
+wheel_friction_slip = 0.9
+suspension_stiffness = 50.0
+suspension_max_force = 500.0
+damping_compression = 0.2
+damping_relaxation = 0.3
+
+[node name="Mesh" type="CSGCylinder3D" parent="FrontLeft"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.1, 0, 0)
+radius = 0.35
+height = 0.3
+sides = 12
+material = SubResource("StandardMaterial3D_oyoa4")
+
+[node name="FrontRight" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.35, 1.6)
+use_as_steering = true
+wheel_roll_influence = 0.01
+wheel_radius = 0.35
+wheel_friction_slip = 0.9
+suspension_stiffness = 50.0
+suspension_max_force = 500.0
+damping_compression = 0.2
+damping_relaxation = 0.3
+
+[node name="Mesh" type="CSGCylinder3D" parent="FrontRight"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.1, 0, 0)
+radius = 0.35
+height = 0.3
+sides = 12
+material = SubResource("StandardMaterial3D_jp0t1")
+
+[node name="RearLeft" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.35, -1.6)
+use_as_traction = true
+wheel_roll_influence = 0.01
+wheel_radius = 0.35
+wheel_friction_slip = 0.8
+suspension_stiffness = 50.0
+suspension_max_force = 500.0
+damping_compression = 0.2
+damping_relaxation = 0.3
+
+[node name="Mesh" type="CSGCylinder3D" parent="RearLeft"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.1, 0, 0)
+radius = 0.35
+height = 0.3
+sides = 12
+material = SubResource("StandardMaterial3D_gwxk0")
+
+[node name="RearRight" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.35, -1.6)
+use_as_traction = true
+wheel_roll_influence = 0.01
+wheel_radius = 0.35
+wheel_friction_slip = 0.8
+suspension_stiffness = 50.0
+suspension_max_force = 500.0
+damping_compression = 0.2
+damping_relaxation = 0.3
+
+[node name="Mesh" type="CSGCylinder3D" parent="RearRight"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.1, 0, 0)
+radius = 0.35
+height = 0.3
+sides = 12
+material = SubResource("StandardMaterial3D_pvo3q")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0201538, 1.05, -0.213574)
+shape = SubResource("BoxShape3D_2lptk")
+
+[node name="MainBodyMesh" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 1.19209e-07)
+size = Vector3(1.9, 1.2, 2.6)
+material = SubResource("StandardMaterial3D_dbo52")
+
+[node name="FrontBodyMesh" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 1.8)
+size = Vector3(1.9, 0.7, 1)
+material = SubResource("StandardMaterial3D_dbo52")
+
+[node name="BackBodyMesh" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -1.8)
+size = Vector3(1.9, 0.7, 1)
+material = SubResource("StandardMaterial3D_dbo52")
+
+[node name="speedometer" type="Label3D" parent="BackBodyMesh"]
+transform = Transform3D(-0.999955, 0, 0.00949455, 0.00221082, 0.972512, 0.232841, -0.00923357, 0.232851, -0.972469, 0, 0.0320257, -0.682582)
+text = "speed"
+
+[node name="LeftMirrorMesh" type="CSGBox3D" parent="."]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 1.30234, 1.33945, 1.14579)
+size = Vector3(0.518945, 0.678381, 0.001)
+
+[node name="RightMirrorMesh" type="CSGBox3D" parent="."]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -1.29008, 1.35141, 1.14907)
+size = Vector3(0.493555, 0.683752, 0.001)
+
+[node name="CenterOfMass" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0.9)
+
+[node name="CameraPivot" type="Node3D" parent="."]
+unique_name_in_owner = true
+top_level = true
+
+[node name="ForwardCamera" type="Camera3D" parent="CameraPivot"]
+unique_name_in_owner = true
+transform = Transform3D(-1, -2.04281e-14, -8.74227e-08, -1.51808e-08, 0.984808, 0.173648, 8.60946e-08, 0.173648, -0.984808, 0, 2.6, -4)
+current = true
+fov = 80.0
+
+[node name="BackwardCamera" type="Camera3D" parent="CameraPivot"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 2.8, 3.7)
+fov = 80.0

@@ -2,12 +2,11 @@ extends GPUParticles3D
 
 @export var vehicle : Vehicle
 
-@export var longitudinal_slip_threshold := 0.5
-@export var lateral_slip_threshold := 1.0
+@export var longitudinal_slip_threshold : float = 0.5
+@export var lateral_slip_threshold      : float = 1.0
 
-func _process(delta):
+func _process(_delta: float) -> void:
 	if is_instance_valid(vehicle):
-		print("fuck")
 		for wheel in vehicle.wheel_array:
 			if absf(wheel.slip_vector.x) > lateral_slip_threshold or absf(wheel.slip_vector.y) > longitudinal_slip_threshold:
 				var smoke_transform : Transform3D = wheel.global_transform

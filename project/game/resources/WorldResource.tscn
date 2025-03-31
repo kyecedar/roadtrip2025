@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://b35w64jlhji1d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h4a02"]
+size = Vector3(2.34471, 2.18787, 2.13979)
+
+[node name="WorldResource" type="Node3D" groups=["WorldResource"]]
+
+[node name="Sprite" type="Sprite3D" parent="."]
+billboard = 1
+alpha_cut = 1
+render_priority = 1
+
+[node name="Area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.750977, 0, 0)
+
+[node name="Collision" type="CollisionShape3D" parent="Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.678551, 0.163269, -0.0021975)
+shape = SubResource("BoxShape3D_h4a02")

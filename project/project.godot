@@ -12,7 +12,7 @@ config_version=5
 
 config/name="roadtrip2025_local"
 config/version="0.01"
-run/main_scene="uid://cw83n6j2pmhgk"
+run/main_scene="uid://b833lanm64rsx"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -38,6 +38,8 @@ folder_colors={
 
 Player="THIS IS THE PLAYER."
 SurfaceRoad=""
+ResourceSpawner="A spawner that randomly is or is not a resource."
+WorldResource="Resources in the world that the player can drive over to pick up."
 
 [input]
 

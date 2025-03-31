@@ -16,7 +16,7 @@ func _ready():
 	if not Engine.is_editor_hint():
 		icon_sprite.texture = item_texture
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	# Set the texture to reflect in the editor
 	if Engine.is_editor_hint():
 		icon_sprite.texture = item_texture

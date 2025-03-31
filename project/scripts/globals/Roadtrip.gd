@@ -13,8 +13,11 @@ extends Node
 signal game_paused
 signal game_unpaused
 
+@warning_ignore("unused_signal")
 signal window_size_change(size: Vector2i)
+@warning_ignore("unused_signal")
 signal window_focus
+@warning_ignore("unused_signal")
 signal window_unfocus
 
 signal inventory_updated
@@ -90,7 +93,7 @@ var PLAYER_CAMERA_MAX_ROLL_ROTATION : float = 30.0 ## In degrees.
 var PLAYER_MAX_SPEED : float = 80.0 ## Miles the per hour per eagle per fooball field per AR-15 magazines.
 #countdown
 var countdown: int = 300
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if countdown < 0:
 		get_tree().change_scene_to_file("res://GAMEOVER.tscn")
 #endregion player.
@@ -133,7 +136,8 @@ var items : Dictionary[String, int] = {
 var sticks: int = 0
 var apple: int = 0
 
-@onready var item_icon = $InnerBorder/ItemIcon
+#@onready var item_icon = $InnerBorder/ItemIcon
+var item_icon
 
 var spawnable_items = [
 	{"name": "apple", "texture": preload("res://inventory/Icons/icon31.png")},
@@ -197,6 +201,15 @@ func unpause() -> void:
 func _on_window_size_changed() -> void:
 	pass
 #endregion window.
+
+
+#region // scenes. /////
+## Changes scene to given scene via it's path.
+func change_scene_to(scene_path: String) -> void:
+	call_deferred("_change_scene_to", scene_path)
+func _change_scene_to(scene_path: String) -> void:
+	get_tree().change_scene_to_file(scene_path)
+#endregion scenes.
 
 
 #region // inventory. /////

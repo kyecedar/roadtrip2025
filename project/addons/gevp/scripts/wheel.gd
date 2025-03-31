@@ -165,8 +165,6 @@ func process_forces(opposite_compression : float, braking : bool, delta : float)
 		if surface_groups.size() > 0:
 			#print(surface_groups)
 			if surface_groups[0].begins_with(SURFACE_PREFIX) and surface_type != surface_groups[0]:
-				print(surface_groups[0])
-				
 				surface_type = surface_groups[0].substr(SURFACE_PREFIX.length())
 				current_cof = coefficient_of_friction[surface_type]
 				current_rolling_resistance = rolling_resistance[surface_type]

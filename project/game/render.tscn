@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ccbs5tkioue8x"]
 
-[ext_resource type="PackedScene" uid="uid://cw83n6j2pmhgk" path="res://game/Main.tscn" id="1_3tvqy"]
+[ext_resource type="PackedScene" uid="uid://cw83n6j2pmhgk" path="res://game/MainOld.tscn" id="1_3tvqy"]
 [ext_resource type="PackedScene" uid="uid://b5r450767l42x" path="res://scripts/export_interfaces/playerExportInterface.tscn" id="1_ad7tw"]
 
 [node name="Render" type="Control"]
