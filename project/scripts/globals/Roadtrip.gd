@@ -29,26 +29,26 @@ signal inventory_updated
 #region // VARIABLES. //////////////////////////////////////////////////////////
 
 #region // player. /////
-var max_torque: float = 200
+var max_torque: float = 350
 var max_rpm: float = 3000
-var front_weight_distribution: float = 0.53
+var front_weight_distribution: float = 0.5
 var front_spring_length : float = 0.10
 ## How much the spring is compressed when the vehicle is at rest.
 ## This is used to calculate the approriate spring rate for the wheel.
 ## A value of 0 would be a fully compressed spring.(normal is 0.5)
-var front_resting_ratio : float = 0.2
+var front_resting_ratio : float = 0.5
 ## Damping ratio is used to calculate the damping forces on the spring.
 ## A value of 1 would be critically damped. Passenger cars typically have a
 ## ratio around 0.3, while a race car could be as high as 0.9.
-var front_damping_ratio : float = 0.2
+var front_damping_ratio : float = 0.3
 ## Bump damping multiplier applied to the damping force calulated from the
 ## damping ratio. A typical ratio for a passenger car is 2/3 bump damping to
 ## 3/2 rebound damping. Race cars typically run 3/2 bump to 2/3 rebound.
-var front_bump_damp_multiplier : float = 0.6667
+var front_bump_damp_multiplier : float = 0.67
 ## Rebound damping multiplier applied to the damping force calulated from the
 ## damping ratio. A typical ratio for a passenger car is 2/3 bump damping to
 ## 3/2 rebound damping. Race cars typically run 3/2 bump to 2/3 rebound.
-var front_rebound_damp_multiplier : float = 1.5
+var front_rebound_damp_multiplier : float = 1.3
 
 ## The amount of suspension travel in meters. Rear suspension typically has
 ## more travel than the front.
@@ -57,19 +57,19 @@ var rear_spring_length : float = 0.10
 ## This is used to calculate the approriate spring rate for the wheel.
 ## A value of 1 would be a fully compressed spring. With a value of 0.5 the
 ## suspension will rest at the center of it's length.
-var rear_resting_ratio : float = 0.2
+var rear_resting_ratio : float = 0.5
 ## Damping ratio is used to calculate the damping forces on the spring.
 ## A value of 1 would be critically damped. Passenger cars typically have a
 ## ratio around 0.3, while a race car could be as high as 0.9.
-var rear_damping_ratio : float = 0.2
+var rear_damping_ratio : float = 0.3
 ## Bump damping multiplier applied to the damping force calulated from the
 ## damping ratio. A typical ratio for a passenger car is 2/3 bump damping to
 ## 3/2 rebound damping. Race cars typically run 3/2 bump to 2/3 rebound.
-var rear_bump_damp_multiplier : float = 0.6667
+var rear_bump_damp_multiplier : float = 0.67
 ## Rebound damping multiplier applied to the damping force calulated from the
 ## damping ratio. A typical ratio for a passenger car is 2/3 bump damping to
 ## 3/2 rebound damping. Race cars typically run 3/2 bump to 2/3 rebound.
-var rear_rebound_damp_multiplier : float = 1.5
+var rear_rebound_damp_multiplier : float = 1.3
 #OLD CODE I THINK BELOW
 var PLAYER_MAX_STEER        : float = 40.0 ## Degrees.
 var PLAYER_WHEEL_TURN_SPEED : float =  0.8 ## 2.5 is really good handling, 1.5 is okay handling, 0.5 is shit handling.

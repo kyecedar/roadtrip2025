@@ -132,7 +132,7 @@ var max_rpm = Roadtrip.max_rpm
 @export_group("Drivetrain")
 ## Torque delivered to the front wheels vs the rear wheels.
 ## Value of 1 is FWD, a value of 0 is RWD, anything in between is AWD. FWD SUCKS
-@export var front_torque_split : float = 0.5
+@export var front_torque_split : float = 0
 ## When enabled, the torque split will change based on wheel slip.
 @export var variable_torque_split : bool = true
 ## Torque split to interpolate toward when there is wheel slip. Variable Torque
