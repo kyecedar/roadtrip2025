@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 		var next_location : Vector3 = nav.get_next_path_position()
 		var new_velocity : Vector3 = (next_location-current_location).normalized() * speed
 		velocity = velocity.move_toward(new_velocity,0.05)
-		print(current_speed) 
+
 		move_and_slide()
 	if state == States.COOLDOWN:
 		update_target_location(Roadtrip.enemy_target_position)
@@ -61,6 +61,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	
 	if body.is_in_group("enemy"):
 		speed += 1.0
+		print(speed)
 		e_collide.start()
 
 func _on_enemy_collision_timeout() -> void:
