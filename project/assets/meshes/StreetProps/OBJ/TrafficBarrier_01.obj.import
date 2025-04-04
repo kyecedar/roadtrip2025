@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://blhxggme86tlk"
+path="res://.godot/imported/TrafficBarrier_01.obj-1ee383a222754d761675e25f30fb52da.mesh"
+
+[deps]
+
+files=["res://.godot/imported/TrafficBarrier_01.obj-1ee383a222754d761675e25f30fb52da.mesh"]
+
+source_file="res://assets/meshes/StreetProps/OBJ/TrafficBarrier_01.obj"
+dest_files=["res://.godot/imported/TrafficBarrier_01.obj-1ee383a222754d761675e25f30fb52da.mesh", "res://.godot/imported/TrafficBarrier_01.obj-1ee383a222754d761675e25f30fb52da.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

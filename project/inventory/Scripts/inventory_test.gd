@@ -101,7 +101,7 @@ func _on_suspension_pressed() -> void:
 ## Damping ratio is used to calculate the damping forces on the spring.
 ## A value of 1 would be critically damped. Passenger cars typically have a
 ## ratio around 0.3, while a race car could be as high as 0.9.
-		Roadtrip.rear_damping_ratio = 0.7
+		Roadtrip.rear_damping_ratio = 0.8
 ## Bump damping multiplier applied to the damping force calulated from the
 ## damping ratio. A typical ratio for a passenger car is 2/3 bump damping to
 ## 3/2 rebound damping. Race cars typically run 3/2 bump to 2/3 rebound.
