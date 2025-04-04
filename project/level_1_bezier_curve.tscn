@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://yydc6h6ekcif"]
+
+[sub_resource type="Curve3D" id="Curve3D_33an4"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.166505, -0.1306, 0.239094, 0, 0, 0, 0, 0, 0, -0.594388, -0.587937, -3.34962, 0, 0, 0, 0, 0, 0, -6.00336, -0.246108, -6.42286, 0, 0, 0, 0, 0, 0, -5.56385, 3.71824, -3.19879, 0, 0, 0, 0, 0, 0, -2.47198, -0.301948, -1.26992, 0, 0, 0, 0, 0, 0, 4.71181, -0.291779, 3.40803, 0, 0, 0, 0, 0, 0, -2.0561, -0.305187, 3.2262, 0, 0, 0, 0, 0, 0, -3.60937, 1.45128, 2.20281),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_33an4")

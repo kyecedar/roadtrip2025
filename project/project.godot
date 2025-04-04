@@ -24,6 +24,10 @@ Roadtrip="*res://scripts/globals/Roadtrip.gd"
 
 project/assembly_name="roadtrip2025"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/road-generator/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
