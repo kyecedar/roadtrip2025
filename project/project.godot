@@ -26,7 +26,7 @@ project/assembly_name="roadtrip2025"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/road-generator/plugin.cfg")
+enabled=PackedStringArray("res://addons/addons/csg_terrain/plugin.cfg", "res://addons/csg_terrain/plugin.cfg", "res://addons/road-generator/plugin.cfg")
 
 [file_customization]
 
