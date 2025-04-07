@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://b2nt6mkor6g2o"]
+[gd_scene load_steps=37 format=4 uid="uid://b2nt6mkor6g2o"]
 
 [ext_resource type="Script" uid="uid://hbod5mswiumb" path="res://game/vehicle_controller.gd" id="1_perc0"]
 [ext_resource type="Script" uid="uid://dc0bwl33vwoyw" path="res://addons/gevp/scripts/gui.gd" id="2_gi1qm"]
@@ -10,6 +10,15 @@
 [ext_resource type="AudioStream" uid="uid://dio25xn4f7s6f" path="res://addons/gevp/sounds/4000.wav" id="8_0btyj"]
 [ext_resource type="Script" uid="uid://dhewpcloj0vx2" path="res://addons/gevp/scripts/engine_sound.gd" id="9_im6me"]
 [ext_resource type="PackedScene" uid="uid://crniyl4v8i7d3" path="res://smoke.tscn" id="10_jtvf4"]
+[ext_resource type="Texture2D" uid="uid://bpkhm3bmp8vx8" path="res://assets/reaction_sprites/normal.png" id="11_b72hb"]
+[ext_resource type="Texture2D" uid="uid://1d4nx00fg85v" path="res://assets/reaction_sprites/left.png" id="11_ptk05"]
+[ext_resource type="Texture2D" uid="uid://chpvk7hpn4mdb" path="res://assets/reaction_sprites/right.png" id="12_fuwly"]
+[ext_resource type="Texture2D" uid="uid://82n1c1cxo02h" path="res://assets/reaction_sprites/ouch.png" id="14_0khln"]
+[ext_resource type="Texture2D" uid="uid://cd47e7th765xy" path="res://assets/reaction_sprites/panic.png" id="15_8oup8"]
+[ext_resource type="Texture2D" uid="uid://bl754cto7urri" path="res://assets/reaction_sprites/yay.png" id="16_qa6a8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b51sn"]
+font_size = 40
 
 [sub_resource type="Curve" id="Curve_bt7kc"]
 _data = [Vector2(0, 0.494505), 0.0, 2.04495, 0, 0, Vector2(0.617978, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.692308), -1.4839, 0.0, 0, 0]
@@ -359,6 +368,47 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7qo4e")
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_3q1ya"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("11_b72hb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ptk05")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_fuwly")
+}],
+"loop": true,
+"name": &"leftright",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_0khln")
+}],
+"loop": true,
+"name": &"ouch",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_8oup8")
+}],
+"loop": true,
+"name": &"panic",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_qa6a8")
+}],
+"loop": true,
+"name": &"yay",
+"speed": 10.0
+}]
+
 [node name="Player" type="Node3D" node_paths=PackedStringArray("camera", "camera_focal", "vehicle_node")]
 script = ExtResource("1_perc0")
 camera = NodePath("Camera")
@@ -386,6 +436,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="gas_counter" type="Label" parent="GUI/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_b51sn")
+horizontal_alignment = 1
 
 [node name="Speed" type="Label" parent="GUI/VBoxContainer"]
 layout_mode = 2
@@ -546,6 +601,23 @@ autostart = true
 
 [node name="unstuck_timer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_left = 754.0
+offset_top = 7.0
+offset_right = 1154.0
+offset_bottom = 127.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(400, 120)
+render_target_update_mode = 4
+
+[node name="reactions" type="AnimatedSprite2D" parent="SubViewportContainer/SubViewport"]
+position = Vector2(212, 83)
+scale = Vector2(0.762459, 0.96)
+sprite_frames = SubResource("SpriteFrames_3q1ya")
+animation = &"leftright"
 
 [connection signal="timeout" from="VehicleRigidBody/countdown_timer" to="VehicleRigidBody" method="_on_timer_timeout"]
 [connection signal="timeout" from="VehicleRigidBody/countdown_timer" to="VehicleRigidBody" method="_on_countdown_timer_timeout"]

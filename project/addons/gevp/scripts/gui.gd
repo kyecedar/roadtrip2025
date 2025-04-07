@@ -8,6 +8,7 @@ extends Control
 @onready var countdown_label  = $VBoxContainer/Countdown
 @onready var unstuck_label = $VBoxContainer/unstuck
 @onready var unstuck_timer = $"../unstuck_timer"
+@onready var gas_counter = $VBoxContainer/gas_counter
 var stuck = false
 @export var max_random_force = 1000000
 func _process(_delta: float) -> void:
@@ -15,6 +16,9 @@ func _process(_delta: float) -> void:
 	rpm_label.text = str(round(vehicle.motor_rpm)) + " rpm"
 	gear_label.text = "Gear: " + str(vehicle.current_gear)
 	countdown_label.text = (str(round(Roadtrip.countdown)))
+	gas_counter.text = str(Roadtrip.gas_amount, "/", Roadtrip.gas_required)
+	if Roadtrip.gas_amount == 5:
+		gas_counter.text = ("exit is open!")
 	if vehicle.speed < 1:
 		unstuck_timer.start()
 		unstuck_label.text = ("hit space to unstuck!")

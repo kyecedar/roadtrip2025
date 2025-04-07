@@ -1,7 +1,7 @@
 extends Node
 
 @export var vehicle : Vehicle
-@export var show_debug := true
+@export var show_debug := false
 
 @onready var debug_ui : DebugUI = $DebugUI
 

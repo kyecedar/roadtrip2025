@@ -42,9 +42,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.71, 0)
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("4_obl4g")]
 transform = Transform3D(0.5, 0, 0.866025, 0.214771, -0.968761, -0.123998, 0.838971, 0.247997, -0.48438, 62.8287, 0, 0)
 
-[node name="Label" type="Label" parent="Player/GUI/VBoxContainer" index="3"]
-layout_mode = 2
-
 [node name="VehicleRigidBody" parent="Player" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.44358, 0)
 
@@ -62,6 +59,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21681, 2.89247, -21.8603)
 
 [node name="enemy3" parent="." instance=ExtResource("6_0mokf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.44866, 2.89247, -21.8603)
+
+[node name="gas" parent="." instance=ExtResource("5_f1mn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.6412, 1, -94.1086)
+
+[node name="gas2" parent="." instance=ExtResource("5_f1mn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.838, 1, -96.3186)
+
+[node name="gas3" parent="." instance=ExtResource("5_f1mn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.6684, 0.380841, -62.4534)
+
+[node name="gas4" parent="." instance=ExtResource("5_f1mn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.0593, 1, -78.8667)
+
+[node name="gas5" parent="." instance=ExtResource("5_f1mn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.2486, 1, -79.0726)
 
 [connection signal="body_entered" from="level transition" to="level transition" method="_on_body_entered"]
 
