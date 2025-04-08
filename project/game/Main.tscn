@@ -42,6 +42,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.71, 0)
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("4_obl4g")]
 transform = Transform3D(0.5, 0, 0.866025, 0.214771, -0.968761, -0.123998, 0.838971, 0.247997, -0.48438, 62.8287, 0, 0)
 
+[node name="SubViewportContainer" parent="Player/GUI" index="1"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 400.0
+offset_bottom = 120.0
+
 [node name="VehicleRigidBody" parent="Player" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.44358, 0)
 

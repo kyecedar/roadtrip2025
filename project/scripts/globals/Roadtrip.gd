@@ -92,11 +92,13 @@ var PLAYER_CAMERA_BACKWARD_MIN : float = -6.0
 var PLAYER_CAMERA_MAX_ROLL_ROTATION : float = 30.0 ## In degrees.
 var PLAYER_MAX_SPEED : float = 80.0 ## Miles the per hour per eagle per fooball field per AR-15 magazines.
 #countdown
-var countdown: int = 300
+@onready var reaction_image = $Player/SubViewportContainer/SubViewport/reactions
+var countdown: int = 30
 var gas_amount = 0
 var gas_required = 5
 func _process(_delta: float) -> void:
-
+	if countdown < 30:
+		reaction_image.play("panic")
 	if countdown < 0:
 		get_tree().change_scene_to_file("res://GAMEOVER.tscn")
 #endregion player.

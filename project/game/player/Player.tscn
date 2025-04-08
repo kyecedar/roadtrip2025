@@ -390,7 +390,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"ouch",
-"speed": 10.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -398,7 +398,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"panic",
-"speed": 10.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -406,7 +406,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"yay",
-"speed": 10.0
+"speed": 1.0
 }]
 
 [node name="Player" type="Node3D" node_paths=PackedStringArray("camera", "camera_focal", "vehicle_node")]
@@ -617,7 +617,7 @@ render_target_update_mode = 4
 position = Vector2(212, 83)
 scale = Vector2(0.762459, 0.96)
 sprite_frames = SubResource("SpriteFrames_3q1ya")
-animation = &"leftright"
+animation = &"ouch"
 
 [connection signal="timeout" from="VehicleRigidBody/countdown_timer" to="VehicleRigidBody" method="_on_timer_timeout"]
 [connection signal="timeout" from="VehicleRigidBody/countdown_timer" to="VehicleRigidBody" method="_on_countdown_timer_timeout"]
